@@ -267,19 +267,20 @@ body {
 .search-input {
     width: 100%;
     padding: 10px 16px 10px 40px;
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius-md);
+    border: 2px solid var(--gray-300);
+    border-radius: var(--radius-lg);
     font-size: 14px;
     color: var(--gray-900);
-    background: var(--gray-50);
+    background: var(--white);
     transition: var(--transition);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .search-input:focus {
     outline: none;
     border-color: var(--primary);
     background: var(--white);
-    box-shadow: 0 0 0 3px var(--primary-light);
+    box-shadow: 0 0 0 3px var(--primary-light), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .search-input::placeholder {
