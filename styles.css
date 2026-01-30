@@ -268,7 +268,7 @@ body {
 
 .search-input {
     width: 100%;
-    padding: 10px 16px 10px 40px;
+    padding: 10px 16px;
     border: 2px solid var(--gray-300);
     border-radius: var(--radius-lg);
     font-size: 14px;
