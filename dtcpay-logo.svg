@@ -1,0 +1,6 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hexagon with cutouts -->
+  <path d="M256 0L131 75L131 225L256 300L256 150L381 75L256 0Z" fill="#00A9E0"/>
+  <path d="M381 75L381 225L256 300L256 450L381 375L381 225L506 150L381 75Z" fill="#00A9E0"/>
+  <path d="M256 300L131 375L131 525L256 600L381 525L381 375L256 300Z" fill="#00A9E0"/>
+</svg>
