@@ -75,135 +75,148 @@
         <main class="content">
             <div style="max-width: 1200px;">
                 <div class="card">
-                    <div class="card-body">
-                        <div class="client-banner" style="margin-bottom: 32px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 24px; border-radius: 12px; color: white;">
-                            <div style="display: flex; align-items: center; gap: 16px;">
-                                <div style="width: 64px; height: 64px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 24px; backdrop-filter: blur(10px);">JD</div>
+                    <div class="card-body" style="padding: 40px;">
+                        <!-- Client Banner -->
+                        <div style="margin-bottom: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 28px; border-radius: 16px; color: white; box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);">
+                            <div style="display: flex; align-items: center; gap: 20px;">
+                                <div style="width: 72px; height: 72px; background: rgba(255, 255, 255, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 26px; backdrop-filter: blur(10px); border: 3px solid rgba(255, 255, 255, 0.3);">JD</div>
                                 <div style="flex: 1;">
-                                    <div style="font-weight: 600; font-size: 20px; margin-bottom: 6px;">John Doe</div>
-                                    <div style="font-size: 14px; opacity: 0.9;">ID: 260115130049329 • Phone: +65 9*** **** • Email: j***@gmail.com</div>
+                                    <div style="font-weight: 700; font-size: 22px; margin-bottom: 8px; letter-spacing: -0.5px;">John Doe</div>
+                                    <div style="font-size: 14px; opacity: 0.95; font-weight: 500;">ID: 260115130049329 • Phone: +65 9*** **** • Email: j***@gmail.com</div>
                                 </div>
                             </div>
                         </div>
 
-                        <div style="text-align: center; margin-bottom: 32px;">
-                            <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
-                                <i data-feather="lock" style="width: 28px; height: 28px; color: white;"></i>
+                        <!-- Section Header -->
+                        <div style="text-align: center; margin-bottom: 40px;">
+                            <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 8px 20px rgba(102, 126, 234, 0.25);">
+                                <i data-feather="lock" style="width: 32px; height: 32px; color: white;"></i>
                             </div>
-                            <h2 style="font-size: 24px; font-weight: 700; color: #111827; margin-bottom: 8px;">Verify Client Identity</h2>
-                            <p style="font-size: 15px; color: #6B7280;">Select the best authentication method for this client</p>
+                            <h2 style="font-size: 26px; font-weight: 700; color: #111827; margin-bottom: 10px; letter-spacing: -0.5px;">Verify Client Identity</h2>
+                            <p style="font-size: 15px; color: #6B7280; line-height: 1.6;">Select the best authentication method for this client</p>
                         </div>
 
                         <div class="auth-methods">
                             <!-- App Authorization -->
-                            <div class="auth-method recommended" onclick="authenticateClient('app')" style="cursor: pointer;"
-                        <div class="auth-method-icon">
-                            <i data-feather="smartphone"></i>
-                        </div>
-                        <div class="auth-method-content">
-                            <div class="auth-method-header">
-                                <div class="auth-method-title">App Authorization</div>
-                                <span class="auth-method-badge">Fastest</span>
+                            <div class="auth-method recommended" onclick="authenticateClient('app')" style="cursor: pointer;">
+                                <div class="auth-method-icon">
+                                    <i data-feather="smartphone"></i>
+                                </div>
+                                <div class="auth-method-content">
+                                    <div class="auth-method-header">
+                                        <div class="auth-method-title">App Authorization</div>
+                                        <span class="auth-method-badge">Fastest</span>
+                                    </div>
+                                    <div class="auth-method-description">Client authorizes access directly from their mobile app with biometric or PIN verification</div>
+                                    <div class="auth-method-features">
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>Most Secure</span>
+                                        </div>
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>No codes needed</span>
+                                        </div>
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>~10 seconds</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="select-auth-btn">
+                                    <span>Select</span>
+                                    <i data-feather="chevron-right"></i>
+                                </button>
                             </div>
-                            <div class="auth-method-description">Client authorizes access directly from their mobile app with biometric or PIN verification</div>
-                            <div class="auth-method-features">
-                                <div class="auth-feature">
-                                    <i data-feather="check"></i>
-                                    <span>Most Secure</span>
-                                </div>
-                                <div class="auth-feature">
-                                    <i data-feather="check"></i>
-                                    <span>No codes needed</span>
-                                </div>
-                                <div class="auth-feature">
-                                    <i data-feather="check"></i>
-                                    <span>~10 seconds</span>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" class="select-auth-btn">
-                            <span>Select</span>
-                            <i data-feather="chevron-right"></i>
-                        </button>
-                    </div>
 
                             <!-- OTP -->
                             <div class="auth-method" onclick="authenticateClient('otp')" style="cursor: pointer;">
                                 <div class="auth-method-icon">
-                            <i data-feather="message-square"></i>
-                        </div>
-                        <div class="auth-method-content">
-                            <div class="auth-method-header">
-                                <div class="auth-method-title">SMS / Email OTP</div>
+                                    <i data-feather="message-square"></i>
+                                </div>
+                                <div class="auth-method-content">
+                                    <div class="auth-method-header">
+                                        <div class="auth-method-title">SMS / Email OTP</div>
+                                    </div>
+                                    <div class="auth-method-description">Send a one-time password to client's registered mobile number or email address</div>
+                                    <div class="auth-method-features">
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>Widely accessible</span>
+                                        </div>
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>6-digit code</span>
+                                        </div>
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>~30 seconds</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="select-auth-btn">
+                                    <span>Select</span>
+                                    <i data-feather="chevron-right"></i>
+                                </button>
                             </div>
-                            <div class="auth-method-description">Send a one-time password to client's registered mobile number or email address</div>
-                            <div class="auth-method-features">
-                                <div class="auth-feature">
-                                    <i data-feather="check"></i>
-                                    <span>Widely accessible</span>
-                                </div>
-                                <div class="auth-feature">
-                                    <i data-feather="check"></i>
-                                    <span>6-digit code</span>
-                                </div>
-                                <div class="auth-feature">
-                                    <i data-feather="check"></i>
-                                    <span>~30 seconds</span>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" class="select-auth-btn">
-                            <span>Select</span>
-                            <i data-feather="chevron-right"></i>
-                        </button>
-                    </div>
 
                             <!-- Personal Verification -->
                             <div class="auth-method" onclick="authenticateClient('personal')" style="cursor: pointer;">
                                 <div class="auth-method-icon">
-                            <i data-feather="user-check"></i>
-                        </div>
-                        <div class="auth-method-content">
-                            <div class="auth-method-header">
-                                <div class="auth-method-title">Personal Information Verification</div>
-                            </div>
-                            <div class="auth-method-description">Ask client to verify personal details (last 4 digits of ID, date of birth, etc.)</div>
-                            <div class="auth-method-features">
-                                <div class="auth-feature">
-                                    <i data-feather="check"></i>
-                                    <span>No app required</span>
+                                    <i data-feather="user-check"></i>
                                 </div>
-                                <div class="auth-feature">
-                                    <i data-feather="check"></i>
-                                    <span>Voice call friendly</span>
+                                <div class="auth-method-content">
+                                    <div class="auth-method-header">
+                                        <div class="auth-method-title">Personal Information Verification</div>
+                                    </div>
+                                    <div class="auth-method-description">Ask client to verify personal details (last 4 digits of ID, date of birth, etc.)</div>
+                                    <div class="auth-method-features">
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>No app required</span>
+                                        </div>
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>Voice call friendly</span>
+                                        </div>
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>~45 seconds</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="auth-feature">
-                                    <i data-feather="check"></i>
-                                    <span>~45 seconds</span>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" class="select-auth-btn">
-                            <span>Select</span>
-                            <i data-feather="chevron-right"></i>
+                                <button type="button" class="select-auth-btn">
+                                    <span>Select</span>
+                                    <i data-feather="chevron-right"></i>
                                 </button>
                             </div>
                         </div>
 
-                        <div class="skip-auth-section" style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #E5E7EB; display: flex; align-items: center; justify-content: space-between;">
-                            <div class="skip-auth-info">
-                                <div class="skip-auth-title" style="font-weight: 600; font-size: 15px; color: #111827; margin-bottom: 4px;">Skip Authentication</div>
-                                <div class="skip-auth-desc" style="font-size: 13px; color: #EF4444;">Not recommended - Only for internal investigations</div>
+                        <!-- Skip Section -->
+                        <div style="margin-top: 40px; padding-top: 32px; border-top: 2px solid #E5E7EB; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+                            <div style="flex: 1; min-width: 250px;">
+                                <div style="font-weight: 600; font-size: 16px; color: #111827; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+                                    <i data-feather="alert-circle" style="width: 18px; height: 18px; color: #F59E0B;"></i>
+                                    Skip Authentication
+                                </div>
+                                <div style="font-size: 13px; color: #EF4444; font-weight: 500;">⚠️ Not recommended - Only for internal investigations</div>
                             </div>
-                            <button type="button" class="btn btn-secondary" onclick="showSkipConfirmation()">
+                            <button type="button" class="btn btn-secondary" onclick="showSkipConfirmation()" style="padding: 10px 24px;">
+                                <i data-feather="skip-forward" style="width: 16px; height: 16px; margin-right: 8px;"></i>
                                 Skip
                             </button>
                         </div>
 
-                        <div style="margin-top: 24px; padding: 16px; background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 8px; display: flex; gap: 12px; align-items: flex-start;">
-                            <i data-feather="shield" style="width: 20px; height: 20px; color: #10B981; flex-shrink: 0; margin-top: 2px;"></i>
-                            <div style="font-size: 13px; color: #065F46; line-height: 1.6;">
-                                <strong>Authentication-First Security:</strong> All client data remains masked until authentication is complete. This session will be valid for 15 minutes with one extension allowed.
+                        <!-- Security Note -->
+                        <div style="margin-top: 32px; padding: 20px; background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%); border: 2px solid #BBF7D0; border-radius: 12px; display: flex; gap: 16px; align-items: flex-start; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);">
+                            <div style="width: 40px; height: 40px; background: #10B981; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i data-feather="shield" style="width: 22px; height: 22px; color: white;"></i>
+                            </div>
+                            <div style="flex: 1;">
+                                <div style="font-size: 14px; color: #065F46; line-height: 1.7; font-weight: 500;">
+                                    <strong style="font-weight: 700; font-size: 15px;">Authentication-First Security</strong><br>
+                                    All client data remains masked until authentication is complete. This session will be valid for 15 minutes with one extension allowed.
+                                </div>
                             </div>
                         </div>
                     </div>
