@@ -13,6 +13,29 @@ function init() {
 
     // Set up event listeners
     setupEventListeners();
+
+    // Check URL parameters for auto-navigation
+    checkURLParameters();
+}
+
+function checkURLParameters() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const view = urlParams.get('view');
+    const clientId = urlParams.get('clientId');
+    const authenticated = urlParams.get('authenticated');
+
+    // If coming from authentication flow, show client detail directly
+    if (view === 'detail' && clientId) {
+        // Show an authentication status message if available
+        if (authenticated === 'true') {
+            console.log('Client authenticated successfully');
+        } else if (authenticated === 'skip') {
+            console.log('Authentication skipped - This action has been logged');
+        }
+
+        // Navigate to client detail view
+        showClientDetail(clientId);
+    }
 }
 
 function setupEventListeners() {

@@ -5,97 +5,167 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search by Mobile Number - dtcpay CS Portal</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
-    <div class="auth-page-container">
-        <div class="auth-header">
-            <button class="back-button" onclick="window.location.href='index.html'">
-                <i data-feather="arrow-left"></i>
-            </button>
-            <h1 class="auth-header-title">Search by Mobile Number</h1>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo" style="flex-direction: column; align-items: center;">
+                <img src="https://dtcpay.com/wp-content/themes/dtc/frontend/resources/img/dtc-logo.svg" alt="dtcpay" style="height: 40px; width: auto; margin-bottom: 8px;" onerror="this.style.display='none'">
+                <div style="display: flex; flex-direction: column; gap: 2px; align-items: center; text-align: center;">
+                    <span style="font-size: 16px; font-weight: 700; color: var(--white); letter-spacing: 0.5px;">TOP 2.0</span>
+                    <span style="font-size: 13px; font-weight: 500; color: var(--sidebar-text);">CS Portal</span>
+                </div>
+            </div>
         </div>
 
-        <div class="auth-content">
-            <div class="auth-card">
-                <div class="find-client-header">
-                    <div class="find-client-icon">
-                        <i data-feather="smartphone"></i>
-                    </div>
-                    <h2 class="find-client-title">Enter Mobile Number</h2>
-                    <p class="find-client-description">Enter the client's registered mobile number to begin authentication</p>
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">AUTHENTICATION</div>
+                <a href="index.html" class="nav-item">
+                    <i data-feather="search"></i>
+                    <span>Find Client</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <i data-feather="smartphone"></i>
+                    <span>Mobile Search</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="user-avatar-small">CS</div>
+                <div class="user-info">
+                    <div class="user-name-small">CS Agent</div>
+                    <div class="user-role">Customer Support</div>
                 </div>
+            </div>
+        </div>
+    </aside>
 
-                <form onsubmit="handleSearch(event)" style="margin-top: 32px;">
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px;">Mobile Number</label>
-                        <div style="display: flex; gap: 12px;">
-                            <select id="countryCode" style="width: 140px; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 12px; font-size: 15px; font-family: 'Inter', sans-serif;">
-                                <option value="+65" selected>🇸🇬 +65</option>
-                                <option value="+1">🇺🇸 +1</option>
-                                <option value="+44">🇬🇧 +44</option>
-                                <option value="+60">🇲🇾 +60</option>
-                                <option value="+86">🇨🇳 +86</option>
-                            </select>
-                            <input type="tel" id="phoneInput" placeholder="9123 4567" required autocomplete="off"
-                                style="flex: 1; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 12px; font-size: 17px; letter-spacing: 1px; font-family: 'Inter', sans-serif;">
-                        </div>
-                        <div style="margin-top: 8px; font-size: 13px; color: #6B7280; display: flex; align-items: center; gap: 6px;">
-                            <i data-feather="info" style="width: 16px; height: 16px;"></i>
-                            <span>Enter the mobile number exactly as registered in the system</span>
-                        </div>
-                    </div>
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Top Navigation Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i data-feather="menu"></i>
+                </button>
+                <button class="btn btn-sm btn-secondary" onclick="window.location.href='index.html'" style="margin-right: 16px;">
+                    <i data-feather="arrow-left" style="width: 14px; height: 14px;"></i>
+                    Back
+                </button>
+                <h1 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0;">Search by Mobile Number</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="user-menu">
+                    <div class="user-avatar">CS</div>
+                    <span class="user-name">CS Agent</span>
+                    <i data-feather="chevron-down"></i>
+                </div>
+            </div>
+        </header>
 
-                    <div id="searchResult" style="display: none; padding: 20px; background: rgba(16, 185, 129, 0.05); border: 2px solid #10B981; border-radius: 12px; margin-bottom: 20px;">
-                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-                            <div style="width: 32px; height: 32px; background: #10B981; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                <i data-feather="check" style="width: 20px; height: 20px; stroke: white;"></i>
-                            </div>
-                            <div style="font-weight: 600; color: #10B981;">Client Found</div>
-                        </div>
-                        <p style="font-size: 14px; color: #6B7280; margin-bottom: 16px;">1 client found matching this mobile number. Proceed to authentication.</p>
-                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px; background: white; border-radius: 8px;">
-                            <div style="display: flex; align-items: center; gap: 12px;">
-                                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">JD</div>
-                                <div>
-                                    <div style="font-weight: 600;">John Doe</div>
-                                    <div style="font-size: 13px; color: #6B7280;">ID: 260115130049329 • +65 9*** ****</div>
+        <!-- Main Content Area -->
+        <main class="content">
+            <div class="page-header">
+                <div>
+                    <h2 class="page-title">Enter Mobile Number</h2>
+                    <p class="page-description">Enter the client's registered mobile number to begin authentication</p>
+                </div>
+            </div>
+
+            <div style="max-width: 800px;">
+                <div class="card">
+                    <div class="card-body">
+                        <form onsubmit="handleSearch(event)">
+                            <div class="form-group">
+                                <label class="form-label">
+                                    <i data-feather="smartphone" style="width: 16px; height: 16px;"></i>
+                                    Mobile Number
+                                </label>
+                                <div style="display: flex; gap: 12px;">
+                                    <select id="countryCode" class="form-select" style="width: 160px;">
+                                        <option value="+65" selected>🇸🇬 +65 Singapore</option>
+                                        <option value="+1">🇺🇸 +1 USA</option>
+                                        <option value="+44">🇬🇧 +44 UK</option>
+                                        <option value="+60">🇲🇾 +60 Malaysia</option>
+                                        <option value="+86">🇨🇳 +86 China</option>
+                                        <option value="+852">🇭🇰 +852 Hong Kong</option>
+                                    </select>
+                                    <input type="tel" id="phoneInput" class="form-input" placeholder="9123 4567" required autocomplete="off" style="flex: 1; font-size: 18px; letter-spacing: 1px;">
+                                </div>
+                                <div class="form-hint">
+                                    <i data-feather="info" style="width: 14px; height: 14px;"></i>
+                                    Enter the mobile number exactly as registered in the system
                                 </div>
                             </div>
-                            <button type="button" onclick="window.location.href='choose-auth.html'" style="padding: 8px 20px; background: #667eea; color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-                                <span>Continue</span>
-                                <i data-feather="chevron-right" style="width: 16px; height: 16px;"></i>
+
+                            <div id="searchResult" style="display: none; margin-top: 24px;">
+                                <div class="alert alert-success">
+                                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                                        <i data-feather="check-circle" style="width: 24px; height: 24px; color: #10B981;"></i>
+                                        <div>
+                                            <strong>Client Found</strong>
+                                            <p style="margin: 4px 0 0; font-size: 14px;">1 client found matching this mobile number</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="client-preview-card">
+                                        <div style="display: flex; align-items: center; gap: 16px;">
+                                            <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 20px;">JD</div>
+                                            <div style="flex: 1;">
+                                                <div style="font-weight: 600; font-size: 16px; margin-bottom: 4px;">John Doe</div>
+                                                <div style="font-size: 13px; color: #6B7280;">ID: 260115130049329 • +65 9*** ****</div>
+                                            </div>
+                                            <button type="button" class="btn btn-primary" onclick="window.location.href='choose-auth.html?clientId=260115130049329'">
+                                                Continue to Authentication
+                                                <i data-feather="arrow-right" style="width: 16px; height: 16px;"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" id="searchBtn" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 24px;">
+                                <i data-feather="search" style="width: 18px; height: 18px;"></i>
+                                Search Client
                             </button>
-                        </div>
-                    </div>
+                        </form>
 
-                    <button type="submit" id="searchBtn" style="width: 100%; padding: 14px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                        <i data-feather="search" style="width: 20px; height: 20px;"></i>
-                        <span>Search Client</span>
-                    </button>
-                </form>
-
-                <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #E5E7EB;">
-                    <div style="font-size: 13px; font-weight: 600; color: #6B7280; margin-bottom: 12px;">Accepted Formats</div>
-                    <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #6B7280;">
-                            <i data-feather="check" style="width: 16px; height: 16px; stroke: #10B981;"></i>
-                            <span style="font-family: 'SF Mono', 'Monaco', monospace; font-weight: 500;">9123 4567</span>
-                            <span>(Local format with space)</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #6B7280;">
-                            <i data-feather="check" style="width: 16px; height: 16px; stroke: #10B981;"></i>
-                            <span style="font-family: 'SF Mono', 'Monaco', monospace; font-weight: 500;">91234567</span>
-                            <span>(Local format without space)</span>
+                        <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #E5E7EB;">
+                            <div style="font-size: 13px; font-weight: 600; color: #6B7280; margin-bottom: 12px;">Accepted Formats</div>
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #6B7280;">
+                                    <i data-feather="check" style="width: 16px; height: 16px; color: #10B981;"></i>
+                                    <code style="background: #F3F4F6; padding: 2px 8px; border-radius: 4px;">9123 4567</code>
+                                    <span>Local format with space</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #6B7280;">
+                                    <i data-feather="check" style="width: 16px; height: 16px; color: #10B981;"></i>
+                                    <code style="background: #F3F4F6; padding: 2px 8px; border-radius: 4px;">91234567</code>
+                                    <span>Local format without space</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
 
+    <script src="script.js"></script>
     <script>
         feather.replace();
+
+        document.getElementById('menuToggle')?.addEventListener('click', function() {
+            document.getElementById('sidebar')?.classList.toggle('active');
+        });
 
         const phoneInput = document.getElementById('phoneInput');
         const searchResult = document.getElementById('searchResult');
@@ -111,15 +181,13 @@
         function handleSearch(e) {
             e.preventDefault();
             const btn = document.getElementById('searchBtn');
-            btn.innerHTML = '<span>Searching...</span>';
-            btn.style.opacity = '0.7';
+            btn.innerHTML = '<i data-feather="loader" style="width: 18px; height: 18px;"></i> Searching...';
             btn.disabled = true;
 
             setTimeout(() => {
                 searchResult.style.display = 'block';
                 feather.replace();
-                btn.innerHTML = '<i data-feather="search"></i><span>Search Client</span>';
-                btn.style.opacity = '1';
+                btn.innerHTML = '<i data-feather="search" style="width: 18px; height: 18px;"></i> Search Client';
                 btn.disabled = false;
                 feather.replace();
             }, 800);
