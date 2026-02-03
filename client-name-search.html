@@ -85,90 +85,82 @@
 
         <!-- Main Content Area -->
         <main class="content" style="background: #F9FAFB; min-height: 100vh;">
-            <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-                <!-- Header Section -->
-                <div style="text-align: center; margin-bottom: 40px;">
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 16px;">
-                        <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);">
-                            <i data-feather="user" style="width: 32px; height: 32px; color: white;"></i>
+            <div style="display: grid; grid-template-columns: 450px 1fr; gap: 24px; padding: 40px 20px; max-width: 1600px; margin: 0 auto;">
+                <!-- Left Side: Search Form -->
+                <div>
+                    <div style="background: white; border-radius: 16px; padding: 32px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); position: sticky; top: 24px;">
+                        <div style="text-align: center; margin-bottom: 32px;">
+                            <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);">
+                                <i data-feather="user" style="width: 32px; height: 32px; color: white;"></i>
+                            </div>
+                            <h1 style="font-size: 24px; font-weight: 700; color: #111827; margin: 0 0 8px 0; letter-spacing: -0.5px;">Search by Name</h1>
+                            <p style="font-size: 14px; color: #6B7280; line-height: 1.5; margin: 0;">Enter full or partial name</p>
                         </div>
-                        <h1 style="font-size: 32px; font-weight: 700; color: #111827; margin: 0; letter-spacing: -0.5px;">Enter Client Name</h1>
-                    </div>
-                    <p style="font-size: 16px; color: #6B7280; line-height: 1.6; margin: 0;">Enter the client's full name or partial name to search</p>
-                </div>
 
-                <div style="background: white; border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
                         <form onsubmit="handleSearch(event)">
                             <div style="margin-bottom: 24px;">
-                                <label style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 12px;">
-                                    <i data-feather="user" style="width: 18px; height: 18px;"></i>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; color: #111827; margin-bottom: 10px;">
+                                    <i data-feather="user" style="width: 16px; height: 16px;"></i>
                                     Client Name
                                 </label>
-                                <input type="text" id="nameInput" class="form-input" placeholder="John Doe" required autocomplete="off" style="width: 100%; height: 52px; font-size: 18px; border: 2px solid #E5E7EB; border-radius: 10px; padding: 0 20px;">
-                                <div style="display: flex; align-items: center; gap: 8px; margin-top: 12px; padding: 12px; background: #F3F4F6; border-radius: 8px;">
-                                    <i data-feather="info" style="width: 16px; height: 16px; color: #6366F1; flex-shrink: 0;"></i>
-                                    <span style="font-size: 14px; color: #6B7280;">Enter full name or partial name to see matching results</span>
+                                <input type="text" id="nameInput" class="form-input" placeholder="John" required autocomplete="off" style="width: 100%; height: 52px; font-size: 18px; border: 2px solid #E5E7EB; border-radius: 10px; padding: 0 20px;">
+                                <div style="display: flex; align-items: center; gap: 8px; margin-top: 10px; padding: 10px; background: #F3F4F6; border-radius: 8px;">
+                                    <i data-feather="info" style="width: 14px; height: 14px; color: #6366F1; flex-shrink: 0;"></i>
+                                    <span style="font-size: 13px; color: #6B7280;">Results will appear on the right</span>
                                 </div>
                             </div>
 
-                            <div id="searchResult" style="display: none; margin-top: 24px;">
-                                <div class="alert alert-success">
-                                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                                        <i data-feather="check-circle" style="width: 24px; height: 24px; color: #10B981;"></i>
-                                        <div>
-                                            <strong>Client Found</strong>
-                                            <p style="margin: 4px 0 0; font-size: 14px;">1 client found matching this name</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="client-preview-card">
-                                        <div style="display: flex; align-items: center; gap: 16px;">
-                                            <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 20px;">JD</div>
-                                            <div style="flex: 1;">
-                                                <div style="font-weight: 600; font-size: 16px; margin-bottom: 4px;">John Doe</div>
-                                                <div style="font-size: 13px; color: #6B7280;">ID: 260115130049329 • +65 9*** ****</div>
-                                            </div>
-                                            <button type="button" class="btn btn-primary" onclick="window.location.href='choose-auth.html?clientId=260115130049329'">
-                                                Continue to Authentication
-                                                <i data-feather="arrow-right" style="width: 16px; height: 16px;"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <button type="submit" id="searchBtn" style="width: 100%; height: 56px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; border-radius: 12px; color: white; font-size: 17px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4); transition: all 0.2s; margin-top: 32px;">
-                                <i data-feather="search" style="width: 20px; height: 20px;"></i>
+                            <button type="submit" id="searchBtn" style="width: 100%; height: 52px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; border-radius: 12px; color: white; font-size: 16px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4); transition: all 0.2s;">
+                                <i data-feather="search" style="width: 18px; height: 18px;"></i>
                                 Search Client
                             </button>
                         </form>
 
-                        <div style="margin-top: 48px; padding-top: 32px; border-top: 2px solid #E5E7EB;">
-                            <div style="font-size: 15px; font-weight: 700; color: #6B7280; margin-bottom: 20px; letter-spacing: 0.5px;">Search Tips</div>
-                            <div style="display: flex; flex-direction: column; gap: 16px;">
-                                <div style="display: flex; align-items: center; gap: 12px;">
-                                    <i data-feather="check" style="width: 20px; height: 20px; color: #10B981; flex-shrink: 0;"></i>
-                                    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-                                        <code style="background: #F3F4F6; padding: 6px 12px; border-radius: 6px; font-size: 15px; font-weight: 600; color: #374151;">John Doe</code>
-                                        <span style="font-size: 15px; color: #6B7280;">(Full name)</span>
-                                    </div>
+                        <div style="margin-top: 32px; padding-top: 24px; border-top: 2px solid #E5E7EB;">
+                            <div style="font-size: 13px; font-weight: 700; color: #6B7280; margin-bottom: 16px; letter-spacing: 0.5px;">SEARCH EXAMPLES</div>
+                            <div style="display: flex; flex-direction: column; gap: 12px;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <i data-feather="check" style="width: 16px; height: 16px; color: #10B981; flex-shrink: 0;"></i>
+                                    <code style="background: #F3F4F6; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 600; color: #374151;">John</code>
+                                    <span style="font-size: 13px; color: #6B7280;">First name</span>
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 12px;">
-                                    <i data-feather="check" style="width: 20px; height: 20px; color: #10B981; flex-shrink: 0;"></i>
-                                    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-                                        <code style="background: #F3F4F6; padding: 6px 12px; border-radius: 6px; font-size: 15px; font-weight: 600; color: #374151;">John</code>
-                                        <span style="font-size: 15px; color: #6B7280;">(First name only)</span>
-                                    </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <i data-feather="check" style="width: 16px; height: 16px; color: #10B981; flex-shrink: 0;"></i>
+                                    <code style="background: #F3F4F6; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 600; color: #374151;">Tan</code>
+                                    <span style="font-size: 13px; color: #6B7280;">Last name</span>
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 12px;">
-                                    <i data-feather="check" style="width: 20px; height: 20px; color: #10B981; flex-shrink: 0;"></i>
-                                    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-                                        <code style="background: #F3F4F6; padding: 6px 12px; border-radius: 6px; font-size: 15px; font-weight: 600; color: #374151;">Doe</code>
-                                        <span style="font-size: 15px; color: #6B7280;">(Last name only)</span>
-                                    </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <i data-feather="check" style="width: 16px; height: 16px; color: #10B981; flex-shrink: 0;"></i>
+                                    <code style="background: #F3F4F6; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 600; color: #374151;">John Tan</code>
+                                    <span style="font-size: 13px; color: #6B7280;">Full name</span>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Search Results -->
+                <div>
+                    <div id="noResults" style="text-align: center; padding: 120px 20px;">
+                        <div style="width: 80px; height: 80px; background: #F3F4F6; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+                            <i data-feather="search" style="width: 36px; height: 36px; color: #9CA3AF;"></i>
+                        </div>
+                        <h3 style="font-size: 20px; font-weight: 700; color: #111827; margin: 0 0 8px 0;">No search yet</h3>
+                        <p style="font-size: 15px; color: #6B7280; margin: 0;">Enter a client name to see matching results</p>
+                    </div>
+
+                    <div id="searchResults" style="display: none;">
+                        <div style="margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <h2 style="font-size: 22px; font-weight: 700; color: #111827; margin: 0 0 4px 0;">Search Results</h2>
+                                <p id="resultCount" style="font-size: 14px; color: #6B7280; margin: 0;">8 clients found</p>
+                            </div>
+                        </div>
+
+                        <div id="clientGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px;">
+                            <!-- Client cards will be inserted here -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -182,19 +174,65 @@
             document.getElementById('sidebar')?.classList.toggle('active');
         });
 
-        const searchResult = document.getElementById('searchResult');
+        // Mock client data - variations based on search
+        const mockClients = [
+            { name: 'John Tan', id: '260115130049329', initials: 'JT', country: '🇸🇬 Singapore', phone: '+65 9*** ****', color: '#667eea', tier: 'TIER 2', status: 'ACTIVE' },
+            { name: 'John Cheng', id: '260115130049328', initials: 'JC', country: '🇸🇬 Singapore', phone: '+65 8*** ****', color: '#10B981', tier: 'TIER 3', status: 'ACTIVE' },
+            { name: 'Johnson Wang', id: '260115130049327', initials: 'JW', country: '🇨🇳 China', phone: '+86 138 ****', color: '#F59E0B', tier: 'TIER 1', status: 'ACTIVE' },
+            { name: 'John Smith', id: '260115130049326', initials: 'JS', country: '🇺🇸 United States', phone: '+1 415 ***', color: '#EF4444', tier: 'TIER 0', status: 'ACTIVE' },
+            { name: 'John Lee', id: '260115130049325', initials: 'JL', country: '🇭🇰 Hong Kong', phone: '+852 9*** ****', color: '#8B5CF6', tier: 'TIER 2', status: 'ACTIVE' },
+            { name: 'Johnny Lim', id: '260115130049324', initials: 'JL', country: '🇲🇾 Malaysia', phone: '+60 12 ***', color: '#06B6D4', tier: 'TIER 1', status: 'ACTIVE' },
+            { name: 'John Brown', id: '260115130049323', initials: 'JB', country: '🇬🇧 United Kingdom', phone: '+44 20 ***', color: '#EC4899', tier: 'TIER 3', status: 'ACTIVE' },
+            { name: 'John Davis', id: '260115130049322', initials: 'JD', country: '🇦🇺 Australia', phone: '+61 4** ***', color: '#F97316', tier: 'TIER 2', status: 'SUSPENDED' }
+        ];
 
         function handleSearch(e) {
             e.preventDefault();
             const btn = document.getElementById('searchBtn');
-            btn.innerHTML = '<i data-feather="loader" style="width: 20px; height: 20px; animation: spin 1s linear infinite;"></i> Searching...';
+            const nameInput = document.getElementById('nameInput').value;
+
+            btn.innerHTML = '<i data-feather="loader" style="width: 18px; height: 18px; animation: spin 1s linear infinite;"></i> Searching...';
             btn.disabled = true;
             btn.style.opacity = '0.7';
 
             setTimeout(() => {
-                searchResult.style.display = 'block';
+                // Hide no results, show results
+                document.getElementById('noResults').style.display = 'none';
+                document.getElementById('searchResults').style.display = 'block';
+
+                // Update result count
+                document.getElementById('resultCount').textContent = mockClients.length + ' clients found';
+
+                // Generate client cards
+                const clientGrid = document.getElementById('clientGrid');
+                clientGrid.innerHTML = mockClients.map(client => `
+                    <div onclick="window.location.href='choose-auth.html?clientId=${client.id}'" style="background: white; border: 2px solid #E5E7EB; border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.2s;" onmouseenter="this.style.borderColor='#667eea'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.15)';" onmouseleave="this.style.borderColor='#E5E7EB'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                            <div style="width: 56px; height: 56px; background: ${client.color}; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px; flex-shrink: 0;">${client.initials}</div>
+                            <div style="flex: 1; min-width: 0;">
+                                <div style="font-weight: 700; font-size: 17px; color: #111827; margin-bottom: 4px;">${client.name}</div>
+                                <div style="font-size: 13px; color: #6B7280; font-family: monospace;">${client.id}</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+                            <span style="background: ${client.status === 'ACTIVE' ? '#ECFDF5' : '#FEF2F2'}; color: ${client.status === 'ACTIVE' ? '#065F46' : '#991B1B'}; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">${client.tier}</span>
+                            <span style="background: ${client.status === 'ACTIVE' ? '#ECFDF5' : '#FEF2F2'}; color: ${client.status === 'ACTIVE' ? '#065F46' : '#991B1B'}; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">${client.status}</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding-top: 16px; border-top: 1px solid #E5E7EB;">
+                            <div>
+                                <div style="font-size: 11px; color: #9CA3AF; font-weight: 600; text-transform: uppercase; margin-bottom: 4px;">Country</div>
+                                <div style="font-size: 13px; color: #111827; font-weight: 600;">${client.country}</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 11px; color: #9CA3AF; font-weight: 600; text-transform: uppercase; margin-bottom: 4px;">Contact</div>
+                                <div style="font-size: 13px; color: #111827; font-weight: 600;">${client.phone}</div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
                 feather.replace();
-                btn.innerHTML = '<i data-feather="search" style="width: 20px; height: 20px;"></i> Search Client';
+                btn.innerHTML = '<i data-feather="search" style="width: 18px; height: 18px;"></i> Search Client';
                 btn.disabled = false;
                 btn.style.opacity = '1';
                 feather.replace();
