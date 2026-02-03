@@ -459,7 +459,7 @@
                             Tier & KYC History
                         </button>
                         <button class="tab" data-tab="transactions" onclick="switchTab('transactions')">
-                            <i data-feather="activity"></i>
+                            <i data-feather="arrow-right-left"></i>
                             Transactions
                         </button>
                         <button class="tab" data-tab="wallets" onclick="switchTab('wallets')">
@@ -1113,28 +1113,41 @@
                     </div>
                 </div>
 
-                <!-- Tab Content: Transactions (continuing in next part due to length) -->
+                <!-- Tab Content: Wallet Transactions -->
                 <div class="tab-content" id="transactionsTab">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                <i data-feather="activity"></i>
-                                Transaction History
+                                <i data-feather="arrow-right-left"></i>
+                                Wallet Transactions
                             </h3>
                             <div class="card-actions" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-                                <input type="text" class="filter-select-sm" id="transactionIdSearch" style="width: 180px;" placeholder="Search Transaction ID">
-                                <select class="filter-select-sm">
+                                <input type="text" class="filter-select-sm" id="walletTxnSearch" style="width: 180px;" placeholder="Search Transaction ID">
+                                <select class="filter-select-sm" id="walletTxnTypeFilter">
                                     <option>All Types</option>
-                                    <option>Deposits</option>
-                                    <option>Withdrawals</option>
-                                    <option>Swaps</option>
-                                    <option>Card Payments</option>
-                                    <option>Transfers</option>
+                                    <option>Crypto Deposit</option>
+                                    <option>Crypto Withdraw</option>
+                                    <option>Fiat Deposit</option>
+                                    <option>Fiat Withdraw</option>
+                                    <option>QR Payment</option>
+                                    <option>Invoice Payment</option>
+                                    <option>Transfer In</option>
+                                    <option>Transfer Out</option>
+                                    <option>Refund</option>
                                 </select>
-                                <input type="date" class="filter-select-sm" id="startDate" style="width: 140px;" placeholder="Start Date">
+                                <select class="filter-select-sm" id="walletCurrencyFilter">
+                                    <option>All Currencies</option>
+                                    <option>USD</option>
+                                    <option>SGD</option>
+                                    <option>HKD</option>
+                                    <option>USDC</option>
+                                    <option>USDT</option>
+                                    <option>ETH</option>
+                                </select>
+                                <input type="date" class="filter-select-sm" id="walletStartDate" style="width: 140px;" placeholder="Start Date">
                                 <span style="color: #6B7280;">to</span>
-                                <input type="date" class="filter-select-sm" id="endDate" style="width: 140px;" placeholder="End Date">
-                                <button class="btn btn-primary btn-sm" onclick="applyDateFilter()">
+                                <input type="date" class="filter-select-sm" id="walletEndDate" style="width: 140px;" placeholder="End Date">
+                                <button class="btn btn-primary btn-sm" onclick="applyWalletDateFilter()">
                                     <i data-feather="filter"></i>
                                     Filter
                                 </button>
@@ -1147,7 +1160,7 @@
                                         <th>DATE & TIME</th>
                                         <th>TYPE</th>
                                         <th>TRANSACTION ID</th>
-                                        <th>FROM / TO</th>
+                                        <th>NETWORK / METHOD</th>
                                         <th>AMOUNT</th>
                                         <th>FEE</th>
                                         <th>STATUS</th>
@@ -1155,276 +1168,287 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <!-- Crypto Deposit Example -->
                                     <tr class="table-row">
                                         <td>
-                                            <div>Jan 19, 2026</div>
-                                            <div class="text-muted">10:30 AM</div>
+                                            <div>Jan 30, 2026</div>
+                                            <div class="text-muted">06:35 PM</div>
                                         </td>
                                         <td>
                                             <div class="type-cell">
                                                 <div class="transaction-icon-sm bg-green">
                                                     <i data-feather="arrow-down-left"></i>
                                                 </div>
-                                                <span>Deposit</span>
+                                                <span>Crypto Deposit</span>
                                             </div>
                                         </td>
-                                        <td><span class="mono">TXN-456789</span></td>
+                                        <td><span class="mono">2601301835200331115</span></td>
                                         <td>
-                                            <div>Wells Fargo ****1234</div>
-                                            <div class="text-muted">→ USD Wallet</div>
+                                            <div>Ethereum Network</div>
+                                            <div class="text-muted">0xd6f6...d96b</div>
                                         </td>
-                                        <td><span class="amount positive">+$500.00</span></td>
-                                        <td><span class="text-muted">$0.00</span></td>
+                                        <td><span class="amount positive">+5.0 USDC</span></td>
+                                        <td><span class="text-muted">-</span></td>
                                         <td><span class="badge-status status-activated">COMPLETED</span></td>
                                         <td class="text-right">
-                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('TXN-456789')">Details</button>
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601301835200331115', 'crypto')">Details</button>
                                         </td>
                                     </tr>
+                                    <!-- Crypto Withdraw Example -->
                                     <tr class="table-row">
                                         <td>
-                                            <div>Jan 18, 2026</div>
-                                            <div class="text-muted">03:15 PM</div>
-                                        </td>
-                                        <td>
-                                            <div class="type-cell">
-                                                <div class="transaction-icon-sm bg-blue">
-                                                    <i data-feather="credit-card"></i>
-                                                </div>
-                                                <span>Card Payment</span>
-                                            </div>
-                                        </td>
-                                        <td><span class="mono">TXN-456788</span></td>
-                                        <td>
-                                            <div>Card ****4523</div>
-                                            <div class="text-muted">Amazon.com</div>
-                                        </td>
-                                        <td><span class="amount negative">-$125.50</span></td>
-                                        <td><span class="text-muted">$0.00</span></td>
-                                        <td><span class="badge-status status-activated">COMPLETED</span></td>
-                                        <td class="text-right">
-                                            <button class="btn btn-sm btn-secondary">Details</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <td>
-                                            <div>Jan 18, 2026</div>
-                                            <div class="text-muted">11:20 AM</div>
-                                        </td>
-                                        <td>
-                                            <div class="type-cell">
-                                                <div class="transaction-icon-sm bg-purple">
-                                                    <i data-feather="refresh-cw"></i>
-                                                </div>
-                                                <span>Currency Swap</span>
-                                            </div>
-                                        </td>
-                                        <td><span class="mono">TXN-456787</span></td>
-                                        <td>
-                                            <div>$25,000 USD</div>
-                                            <div class="text-muted">→ HK$195,000</div>
-                                        </td>
-                                        <td><span class="amount">HK$195,000</span></td>
-                                        <td><span class="text-muted">HK$97.50</span></td>
-                                        <td><span class="badge-status status-pending">PROCESSING</span></td>
-                                        <td class="text-right">
-                                            <button class="btn btn-sm btn-secondary">Details</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <td>
-                                            <div>Jan 17, 2026</div>
-                                            <div class="text-muted">09:45 AM</div>
+                                            <div>Jan 29, 2026</div>
+                                            <div class="text-muted">04:33 PM</div>
                                         </td>
                                         <td>
                                             <div class="type-cell">
                                                 <div class="transaction-icon-sm bg-red">
                                                     <i data-feather="arrow-up-right"></i>
                                                 </div>
-                                                <span>Withdrawal</span>
+                                                <span>Crypto Withdraw</span>
                                             </div>
                                         </td>
-                                        <td><span class="mono">TXN-456786</span></td>
+                                        <td><span class="mono">2601291633460330968</span></td>
                                         <td>
-                                            <div>SGD Wallet</div>
-                                            <div class="text-muted">→ Bank ****5678</div>
+                                            <div>Ethereum Network</div>
+                                            <div class="text-muted">0x1e27...6c9a</div>
                                         </td>
-                                        <td><span class="amount negative">-S$1,000.00</span></td>
-                                        <td><span class="text-muted">S$5.00</span></td>
-                                        <td><span class="badge-status status-failed">FAILED</span></td>
-                                        <td class="text-right">
-                                            <button class="btn btn-sm btn-secondary">Details</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <td>
-                                            <div>Jan 16, 2026</div>
-                                            <div class="text-muted">04:22 PM</div>
-                                        </td>
-                                        <td>
-                                            <div class="type-cell">
-                                                <div class="transaction-icon-sm bg-blue">
-                                                    <i data-feather="credit-card"></i>
-                                                </div>
-                                                <span>Card Payment</span>
-                                            </div>
-                                        </td>
-                                        <td><span class="mono">TXN-456785</span></td>
-                                        <td>
-                                            <div>Card ****8912</div>
-                                            <div class="text-muted">Starbucks</div>
-                                        </td>
-                                        <td><span class="amount negative">-HK$65.80</span></td>
-                                        <td><span class="text-muted">HK$0.00</span></td>
+                                        <td><span class="amount negative">-9.57 USDC</span></td>
+                                        <td><span class="text-muted">-</span></td>
                                         <td><span class="badge-status status-activated">COMPLETED</span></td>
                                         <td class="text-right">
-                                            <button class="btn btn-sm btn-secondary">Details</button>
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601291633460330968', 'crypto')">Details</button>
                                         </td>
                                     </tr>
+                                    <!-- Transfer In Example -->
                                     <tr class="table-row">
                                         <td>
-                                            <div>Jan 16, 2026</div>
-                                            <div class="text-muted">02:30 PM</div>
-                                        </td>
-                                        <td>
-                                            <div class="type-cell">
-                                                <div class="transaction-icon-sm bg-green">
-                                                    <i data-feather="arrow-down-left"></i>
-                                                </div>
-                                                <span>Deposit</span>
-                                            </div>
-                                        </td>
-                                        <td><span class="mono">TXN-456784</span></td>
-                                        <td>
-                                            <div>HSBC Bank ****9012</div>
-                                            <div class="text-muted">→ HKD Wallet</div>
-                                        </td>
-                                        <td><span class="amount positive">+HK$10,000.00</span></td>
-                                        <td><span class="text-muted">HK$0.00</span></td>
-                                        <td><span class="badge-status status-activated">COMPLETED</span></td>
-                                        <td class="text-right">
-                                            <button class="btn btn-sm btn-secondary">Details</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <td>
-                                            <div>Jan 15, 2026</div>
-                                            <div class="text-muted">11:15 AM</div>
-                                        </td>
-                                        <td>
-                                            <div class="type-cell">
-                                                <div class="transaction-icon-sm bg-purple">
-                                                    <i data-feather="refresh-cw"></i>
-                                                </div>
-                                                <span>Currency Swap</span>
-                                            </div>
-                                        </td>
-                                        <td><span class="mono">TXN-456783</span></td>
-                                        <td>
-                                            <div>500 USDT</div>
-                                            <div class="text-muted">→ 500 USDC</div>
-                                        </td>
-                                        <td><span class="amount">500 USDC</span></td>
-                                        <td><span class="text-muted">0.25 USDC</span></td>
-                                        <td><span class="badge-status status-activated">COMPLETED</span></td>
-                                        <td class="text-right">
-                                            <button class="btn btn-sm btn-secondary">Details</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <td>
-                                            <div>Jan 14, 2026</div>
-                                            <div class="text-muted">06:40 PM</div>
-                                        </td>
-                                        <td>
-                                            <div class="type-cell">
-                                                <div class="transaction-icon-sm bg-blue">
-                                                    <i data-feather="credit-card"></i>
-                                                </div>
-                                                <span>Card Payment</span>
-                                            </div>
-                                        </td>
-                                        <td><span class="mono">TXN-456782</span></td>
-                                        <td>
-                                            <div>Card ****4523</div>
-                                            <div class="text-muted">Netflix Subscription</div>
-                                        </td>
-                                        <td><span class="amount negative">-$15.99</span></td>
-                                        <td><span class="text-muted">$0.00</span></td>
-                                        <td><span class="badge-status status-activated">COMPLETED</span></td>
-                                        <td class="text-right">
-                                            <button class="btn btn-sm btn-secondary">Details</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <td>
-                                            <div>Jan 13, 2026</div>
-                                            <div class="text-muted">01:15 PM</div>
-                                        </td>
-                                        <td>
-                                            <div class="type-cell">
-                                                <div class="transaction-icon-sm bg-red">
-                                                    <i data-feather="arrow-up-right"></i>
-                                                </div>
-                                                <span>Withdrawal</span>
-                                            </div>
-                                        </td>
-                                        <td><span class="mono">TXN-456781</span></td>
-                                        <td>
-                                            <div>USD Wallet</div>
-                                            <div class="text-muted">→ DBS Bank ****3456</div>
-                                        </td>
-                                        <td><span class="amount negative">-$2,000.00</span></td>
-                                        <td><span class="text-muted">$5.00</span></td>
-                                        <td><span class="badge-status status-activated">COMPLETED</span></td>
-                                        <td class="text-right">
-                                            <button class="btn btn-sm btn-secondary">Details</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <td>
-                                            <div>Jan 12, 2026</div>
-                                            <div class="text-muted">10:05 AM</div>
+                                            <div>Jan 26, 2026</div>
+                                            <div class="text-muted">06:04 PM</div>
                                         </td>
                                         <td>
                                             <div class="type-cell">
                                                 <div class="transaction-icon-sm bg-orange">
-                                                    <i data-feather="send"></i>
+                                                    <i data-feather="arrow-down"></i>
                                                 </div>
-                                                <span>Transfer</span>
+                                                <span>Transfer In</span>
                                             </div>
                                         </td>
-                                        <td><span class="mono">TXN-456780</span></td>
+                                        <td><span class="mono">2601261804190330901</span></td>
                                         <td>
-                                            <div>USDT Wallet</div>
-                                            <div class="text-muted">→ john.doe@email.com</div>
+                                            <div>Internal Transfer</div>
+                                            <div class="text-muted">From Client</div>
                                         </td>
-                                        <td><span class="amount negative">-250.00 USDT</span></td>
-                                        <td><span class="text-muted">0.00 USDT</span></td>
+                                        <td><span class="amount positive">+11.0 USDT</span></td>
+                                        <td><span class="text-muted">-</span></td>
                                         <td><span class="badge-status status-activated">COMPLETED</span></td>
                                         <td class="text-right">
-                                            <button class="btn btn-sm btn-secondary">Details</button>
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601261804190330901', 'crypto')">Details</button>
                                         </td>
                                     </tr>
+                                    <!-- QR Payment Example -->
                                     <tr class="table-row">
                                         <td>
-                                            <div>Jan 11, 2026</div>
-                                            <div class="text-muted">08:30 AM</div>
+                                            <div>Feb 03, 2026</div>
+                                            <div class="text-muted">11:47 AM</div>
+                                        </td>
+                                        <td>
+                                            <div class="type-cell">
+                                                <div class="transaction-icon-sm bg-blue">
+                                                    <i data-feather="smartphone"></i>
+                                                </div>
+                                                <span>QR Payment</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="mono">2602031147400278641</span></td>
+                                        <td>
+                                            <div>ALIPAY_PLUS_MPM</div>
+                                            <div class="text-muted">0.54 SGD → 8.0 MYR</div>
+                                        </td>
+                                        <td><span class="amount negative">-0.54 SGD</span></td>
+                                        <td><span class="text-muted">0.00 SGD</span></td>
+                                        <td><span class="badge-status status-activated">COMPLETED</span></td>
+                                        <td class="text-right">
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2602031147400278641', 'fiat')">Details</button>
+                                        </td>
+                                    </tr>
+                                    <!-- Fiat Deposit Example -->
+                                    <tr class="table-row">
+                                        <td>
+                                            <div>Jan 30, 2026</div>
+                                            <div class="text-muted">06:14 PM</div>
                                         </td>
                                         <td>
                                             <div class="type-cell">
                                                 <div class="transaction-icon-sm bg-green">
                                                     <i data-feather="arrow-down-left"></i>
                                                 </div>
-                                                <span>Deposit</span>
+                                                <span>Fiat Deposit</span>
                                             </div>
                                         </td>
-                                        <td><span class="mono">TXN-456779</span></td>
+                                        <td><span class="mono">2601301814480278026</span></td>
                                         <td>
-                                            <div>PayNow Transfer</div>
-                                            <div class="text-muted">→ SGD Wallet</div>
+                                            <div>DBS BANK LTD</div>
+                                            <div class="text-muted">Account ****7878</div>
                                         </td>
-                                        <td><span class="amount positive">+S$5,000.00</span></td>
-                                        <td><span class="text-muted">S$0.00</span></td>
+                                        <td><span class="amount positive">+200.0 SGD</span></td>
+                                        <td><span class="text-muted">0.00 SGD</span></td>
+                                        <td><span class="badge-status status-pending">AUTHORIZED</span></td>
+                                        <td class="text-right">
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601301814480278026', 'fiat')">Details</button>
+                                        </td>
+                                    </tr>
+                                    <!-- Invoice Payment Example -->
+                                    <tr class="table-row">
+                                        <td>
+                                            <div>Jan 31, 2026</div>
+                                            <div class="text-muted">06:01 PM</div>
+                                        </td>
+                                        <td>
+                                            <div class="type-cell">
+                                                <div class="transaction-icon-sm bg-purple">
+                                                    <i data-feather="file-text"></i>
+                                                </div>
+                                                <span>Invoice Payment</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="mono">2601311801360278496</span></td>
+                                        <td>
+                                            <div>Bank of China (HK)</div>
+                                            <div class="text-muted">Account ****6456</div>
+                                        </td>
+                                        <td><span class="amount negative">-4000.0 SGD</span></td>
+                                        <td><span class="text-muted">5.0 SGD</span></td>
+                                        <td><span class="badge-status status-activated">COMPLETED</span></td>
+                                        <td class="text-right">
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601311801360278496', 'fiat')">Details</button>
+                                        </td>
+                                    </tr>
+                                    <!-- Fiat Withdraw Example -->
+                                    <tr class="table-row">
+                                        <td>
+                                            <div>Jan 30, 2026</div>
+                                            <div class="text-muted">09:21 PM</div>
+                                        </td>
+                                        <td>
+                                            <div class="type-cell">
+                                                <div class="transaction-icon-sm bg-red">
+                                                    <i data-feather="arrow-up-right"></i>
+                                                </div>
+                                                <span>Fiat Withdraw</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="mono">2601302121550278161</span></td>
+                                        <td>
+                                            <div>Citibank NA</div>
+                                            <div class="text-muted">Account ****qwer</div>
+                                        </td>
+                                        <td><span class="amount negative">-7.0 SGD</span></td>
+                                        <td><span class="text-muted">5.0 SGD</span></td>
+                                        <td><span class="badge-status status-failed">CLOSED</span></td>
+                                        <td class="text-right">
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601302121550278161', 'fiat')">Details</button>
+                                        </td>
+                                    </tr>
+                                    <!-- Crypto Deposit (Risk Withheld) -->
+                                    <tr class="table-row">
+                                        <td>
+                                            <div>Jan 30, 2026</div>
+                                            <div class="text-muted">05:53 PM</div>
+                                        </td>
+                                        <td>
+                                            <div class="type-cell">
+                                                <div class="transaction-icon-sm bg-green">
+                                                    <i data-feather="arrow-down-left"></i>
+                                                </div>
+                                                <span>Crypto Deposit</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="mono">2601301753250331100</span></td>
+                                        <td>
+                                            <div>BSC Network</div>
+                                            <div class="text-muted">4d08...2345</div>
+                                        </td>
+                                        <td><span class="amount positive">+40.0 USDC</span></td>
+                                        <td><span class="text-muted">-</span></td>
+                                        <td><span class="badge-status status-pending">RISK WITHHELD</span></td>
+                                        <td class="text-right">
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601301753250331100', 'crypto')">Details</button>
+                                        </td>
+                                    </tr>
+                                    <!-- Refund Example -->
+                                    <tr class="table-row">
+                                        <td>
+                                            <div>Jan 31, 2026</div>
+                                            <div class="text-muted">05:19 PM</div>
+                                        </td>
+                                        <td>
+                                            <div class="type-cell">
+                                                <div class="transaction-icon-sm bg-orange">
+                                                    <i data-feather="rotate-ccw"></i>
+                                                </div>
+                                                <span>Refund</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="mono">2601311719230278458</span></td>
+                                        <td>
+                                            <div>QR Payment Refund</div>
+                                            <div class="text-muted">Original: ...8430</div>
+                                        </td>
+                                        <td><span class="amount positive">+13.49 SGD</span></td>
+                                        <td><span class="text-muted">0.00 SGD</span></td>
+                                        <td><span class="badge-status status-activated">COMPLETED</span></td>
+                                        <td class="text-right">
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601311719230278458', 'fiat')">Details</button>
+                                        </td>
+                                    </tr>
+                                    <!-- Transfer Out Example -->
+                                    <tr class="table-row">
+                                        <td>
+                                            <div>Jan 26, 2026</div>
+                                            <div class="text-muted">06:04 PM</div>
+                                        </td>
+                                        <td>
+                                            <div class="type-cell">
+                                                <div class="transaction-icon-sm bg-orange">
+                                                    <i data-feather="arrow-up"></i>
+                                                </div>
+                                                <span>Transfer Out</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="mono">2601261804180330894</span></td>
+                                        <td>
+                                            <div>Internal Transfer</div>
+                                            <div class="text-muted">To Client</div>
+                                        </td>
+                                        <td><span class="amount negative">-11.0 USDT</span></td>
+                                        <td><span class="text-muted">-</span></td>
+                                        <td><span class="badge-status status-activated">COMPLETED</span></td>
+                                        <td class="text-right">
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601261804180330894', 'crypto')">Details</button>
+                                        </td>
+                                    </tr>
+                                    <!-- Another QR Payment -->
+                                    <tr class="table-row">
+                                        <td>
+                                            <div>Jan 30, 2026</div>
+                                            <div class="text-muted">05:02 PM</div>
+                                        </td>
+                                        <td>
+                                            <div class="type-cell">
+                                                <div class="transaction-icon-sm bg-blue">
+                                                    <i data-feather="smartphone"></i>
+                                                </div>
+                                                <span>QR Payment</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="mono">2601301802320277980</span></td>
+                                        <td>
+                                            <div>DTC Mock - MOBILE</div>
+                                            <div class="text-muted">+65 91331200</div>
+                                        </td>
+                                        <td><span class="amount negative">-23786.86 SGD</span></td>
+                                        <td><span class="text-muted">0.00 SGD</span></td>
                                         <td><span class="badge-status status-activated">COMPLETED</span></td>
                                         <td class="text-right">
                                             <button class="btn btn-sm btn-secondary">Details</button>
@@ -1907,13 +1931,22 @@
                         <div class="card-header">
                             <div>
                                 <h3>Card Transactions</h3>
-                                <p class="text-muted">All transactions across all cards</p>
+                                <p class="text-muted">All card-related transactions including purchases, top-ups, and captures</p>
                             </div>
                             <div class="card-actions" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-                                <select class="filter-select-sm">
+                                <select class="filter-select-sm" id="cardNumberFilter">
                                     <option>All Cards</option>
-                                    <option>Card ****4523</option>
-                                    <option>Card ****8912</option>
+                                    <option>Card ****0170</option>
+                                    <option>Card ****5297</option>
+                                    <option>Card ****1529</option>
+                                </select>
+                                <select class="filter-select-sm" id="cardTxnTypeFilter">
+                                    <option>All Types</option>
+                                    <option>PURCHASE</option>
+                                    <option>CAPTURE</option>
+                                    <option>TOP_UP</option>
+                                    <option>REFUND</option>
+                                    <option>REVERSAL</option>
                                 </select>
                                 <input type="date" class="filter-select-sm" id="cardTxnStartDate" style="width: 140px;" placeholder="Start Date">
                                 <span style="color: #6B7280;">to</span>
@@ -1931,97 +1964,243 @@
                                     <tr>
                                         <th>DATE & TIME</th>
                                         <th>CARD</th>
-                                        <th>MERCHANT</th>
-                                        <th>CATEGORY</th>
-                                        <th>LOCATION</th>
+                                        <th>TYPE</th>
+                                        <th>TRANSACTION ID</th>
                                         <th>AMOUNT</th>
+                                        <th>BRAND</th>
                                         <th>STATUS</th>
                                         <th class="text-right">ACTIONS</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <!-- TIMEOUT_REVERSAL Example -->
                                     <tr class="table-row">
                                         <td>
-                                            <div>Jan 19, 2026</div>
-                                            <div class="text-muted">02:45 PM</div>
+                                            <div>Feb 01, 2026</div>
+                                            <div class="text-muted">02:00 AM</div>
                                         </td>
-                                        <td><span class="mono">****4523</span></td>
+                                        <td><span class="mono">****3733</span></td>
                                         <td>
-                                            <div>Starbucks Coffee</div>
-                                            <div class="text-muted" style="font-size: 12px;">Coffee Shop</div>
+                                            <div class="type-cell">
+                                                <div class="transaction-icon-sm bg-orange">
+                                                    <i data-feather="rotate-ccw"></i>
+                                                </div>
+                                                <span>TIMEOUT_REVERSAL</span>
+                                            </div>
                                         </td>
-                                        <td><span class="badge-tier tier-basic">Food & Drink</span></td>
-                                        <td>
-                                            <div>New York, NY</div>
-                                            <div class="text-muted" style="font-size: 12px;">United States</div>
-                                        </td>
-                                        <td><span class="amount negative">-$8.45</span></td>
-                                        <td><span class="badge-status status-activated">COMPLETED</span></td>
+                                        <td><span class="mono">2602010200510544787</span></td>
+                                        <td><span class="amount">69.92 WUSD</span></td>
+                                        <td><span class="badge-tier tier-basic">Visa</span></td>
+                                        <td><span class="badge-status status-activated">SUCCESS</span></td>
                                         <td class="text-right">
-                                            <button class="btn btn-sm btn-secondary">Details</button>
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2602010200510544787', 'card')">Details</button>
                                         </td>
                                     </tr>
+                                    <!-- PURCHASE & CAPTURE Example -->
                                     <tr class="table-row">
                                         <td>
-                                            <div>Jan 18, 2026</div>
-                                            <div class="text-muted">03:15 PM</div>
+                                            <div>Jan 30, 2026</div>
+                                            <div class="text-muted">06:08 PM</div>
                                         </td>
-                                        <td><span class="mono">****4523</span></td>
+                                        <td><span class="mono">****0170</span></td>
                                         <td>
-                                            <div>Amazon.com</div>
-                                            <div class="text-muted" style="font-size: 12px;">Online Retail</div>
+                                            <div class="type-cell">
+                                                <div class="transaction-icon-sm bg-blue">
+                                                    <i data-feather="shopping-cart"></i>
+                                                </div>
+                                                <span>PURCHASE</span>
+                                            </div>
                                         </td>
-                                        <td><span class="badge-tier tier-silver">Shopping</span></td>
-                                        <td>
-                                            <div>Online</div>
-                                            <div class="text-muted" style="font-size: 12px;">E-commerce</div>
-                                        </td>
-                                        <td><span class="amount negative">-$125.50</span></td>
-                                        <td><span class="badge-status status-activated">COMPLETED</span></td>
+                                        <td><span class="mono">2601301808210544720</span></td>
+                                        <td><span class="amount negative">-1.0 SGD</span></td>
+                                        <td><span class="badge-tier tier-basic">Visa</span></td>
+                                        <td><span class="badge-status status-pending">CAPTURED</span></td>
                                         <td class="text-right">
-                                            <button class="btn btn-sm btn-secondary">Details</button>
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601301808210544720', 'card')">Details</button>
                                         </td>
                                     </tr>
+                                    <!-- TOP_UP Example -->
                                     <tr class="table-row">
                                         <td>
-                                            <div>Jan 17, 2026</div>
-                                            <div class="text-muted">07:30 PM</div>
+                                            <div>Jan 30, 2026</div>
+                                            <div class="text-muted">05:50 PM</div>
                                         </td>
-                                        <td><span class="mono">****8912</span></td>
+                                        <td><span class="mono">****1529</span></td>
                                         <td>
-                                            <div>Delta Airlines</div>
-                                            <div class="text-muted" style="font-size: 12px;">Airline</div>
+                                            <div class="type-cell">
+                                                <div class="transaction-icon-sm bg-green">
+                                                    <i data-feather="plus-circle"></i>
+                                                </div>
+                                                <span>TOP_UP</span>
+                                            </div>
                                         </td>
-                                        <td><span class="badge-tier tier-gold">Travel</span></td>
-                                        <td>
-                                            <div>Atlanta, GA</div>
-                                            <div class="text-muted" style="font-size: 12px;">United States</div>
-                                        </td>
-                                        <td><span class="amount negative">-$450.00</span></td>
-                                        <td><span class="badge-status status-activated">COMPLETED</span></td>
+                                        <td><span class="mono">2601301750390544675</span></td>
+                                        <td><span class="amount positive">+10.0 SGD</span></td>
+                                        <td><span class="badge-tier tier-basic">Visa</span></td>
+                                        <td><span class="badge-status status-activated">SUCCESS</span></td>
                                         <td class="text-right">
-                                            <button class="btn btn-sm btn-secondary">Details</button>
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601301750390544675', 'card')">Details</button>
                                         </td>
                                     </tr>
+                                    <!-- CAPTURE Example -->
                                     <tr class="table-row">
                                         <td>
-                                            <div>Jan 16, 2026</div>
-                                            <div class="text-muted">12:20 PM</div>
+                                            <div>Jan 30, 2026</div>
+                                            <div class="text-muted">05:55 PM</div>
                                         </td>
-                                        <td><span class="mono">****8912</span></td>
+                                        <td><span class="mono">****1529</span></td>
                                         <td>
-                                            <div>Shell Gas Station</div>
-                                            <div class="text-muted" style="font-size: 12px;">Gas Station</div>
+                                            <div class="type-cell">
+                                                <div class="transaction-icon-sm bg-purple">
+                                                    <i data-feather="check-circle"></i>
+                                                </div>
+                                                <span>CAPTURE</span>
+                                            </div>
                                         </td>
-                                        <td><span class="badge-tier tier-basic">Auto & Transport</span></td>
-                                        <td>
-                                            <div>Los Angeles, CA</div>
-                                            <div class="text-muted" style="font-size: 12px;">United States</div>
-                                        </td>
-                                        <td><span class="amount negative">-$65.00</span></td>
-                                        <td><span class="badge-status status-activated">COMPLETED</span></td>
+                                        <td><span class="mono">2601301755280544689</span></td>
+                                        <td><span class="amount negative">-10.0 SGD</span></td>
+                                        <td><span class="badge-tier tier-basic">Visa</span></td>
+                                        <td><span class="badge-status status-activated">SUCCESS</span></td>
                                         <td class="text-right">
-                                            <button class="btn btn-sm btn-secondary">Details</button>
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601301755280544689', 'card')">Details</button>
+                                        </td>
+                                    </tr>
+                                    <!-- REFUND Example -->
+                                    <tr class="table-row">
+                                        <td>
+                                            <div>Jan 30, 2026</div>
+                                            <div class="text-muted">09:47 AM</div>
+                                        </td>
+                                        <td><span class="mono">****0170</span></td>
+                                        <td>
+                                            <div class="type-cell">
+                                                <div class="transaction-icon-sm bg-green">
+                                                    <i data-feather="rotate-ccw"></i>
+                                                </div>
+                                                <span>REFUND</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="mono">2601300947010544085</span></td>
+                                        <td><span class="amount positive">+50.0 SGD</span></td>
+                                        <td><span class="badge-tier tier-basic">Visa</span></td>
+                                        <td><span class="badge-status status-pending">CAPTURED</span></td>
+                                        <td class="text-right">
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601300947010544085', 'card')">Details</button>
+                                        </td>
+                                    </tr>
+                                    <!-- REVERSAL_TO_ACCOUNT Example -->
+                                    <tr class="table-row">
+                                        <td>
+                                            <div>Jan 30, 2026</div>
+                                            <div class="text-muted">03:29 PM</div>
+                                        </td>
+                                        <td><span class="mono">****3767</span></td>
+                                        <td>
+                                            <div class="type-cell">
+                                                <div class="transaction-icon-sm bg-orange">
+                                                    <i data-feather="corner-up-left"></i>
+                                                </div>
+                                                <span>REVERSAL_TO_ACCOUNT</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="mono">2601301529390544497</span></td>
+                                        <td><span class="amount positive">+355.66 SGD</span></td>
+                                        <td><span class="badge-tier tier-basic">Visa</span></td>
+                                        <td><span class="badge-status status-activated">SUCCESS</span></td>
+                                        <td class="text-right">
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601301529390544497', 'card')">Details</button>
+                                        </td>
+                                    </tr>
+                                    <!-- INCREMENTAL_AUTH Example -->
+                                    <tr class="table-row">
+                                        <td>
+                                            <div>Jan 30, 2026</div>
+                                            <div class="text-muted">05:50 PM</div>
+                                        </td>
+                                        <td><span class="mono">****1529</span></td>
+                                        <td>
+                                            <div class="type-cell">
+                                                <div class="transaction-icon-sm bg-blue">
+                                                    <i data-feather="arrow-up"></i>
+                                                </div>
+                                                <span>INCREMENTAL_AUTH</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="mono">2601301750390544653</span></td>
+                                        <td><span class="amount negative">-10.0 SGD</span></td>
+                                        <td><span class="badge-tier tier-basic">Visa</span></td>
+                                        <td><span class="badge-status status-pending">CAPTURED</span></td>
+                                        <td class="text-right">
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601301750390544653', 'card')">Details</button>
+                                        </td>
+                                    </tr>
+                                    <!-- REVERSAL Example -->
+                                    <tr class="table-row">
+                                        <td>
+                                            <div>Jan 30, 2026</div>
+                                            <div class="text-muted">01:57 PM</div>
+                                        </td>
+                                        <td><span class="mono">****0170</span></td>
+                                        <td>
+                                            <div class="type-cell">
+                                                <div class="transaction-icon-sm bg-red">
+                                                    <i data-feather="x-circle"></i>
+                                                </div>
+                                                <span>REVERSAL</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="mono">2601301357110544163</span></td>
+                                        <td><span class="amount positive">+10.0 SGD</span></td>
+                                        <td><span class="badge-tier tier-basic">Visa</span></td>
+                                        <td><span class="badge-status status-activated">SUCCESS</span></td>
+                                        <td class="text-right">
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601301357110544163', 'card')">Details</button>
+                                        </td>
+                                    </tr>
+                                    <!-- ACCOUNT_VERIFICATION Example -->
+                                    <tr class="table-row">
+                                        <td>
+                                            <div>Jan 30, 2026</div>
+                                            <div class="text-muted">09:07 AM</div>
+                                        </td>
+                                        <td><span class="mono">****7167</span></td>
+                                        <td>
+                                            <div class="type-cell">
+                                                <div class="transaction-icon-sm bg-purple">
+                                                    <i data-feather="shield"></i>
+                                                </div>
+                                                <span>ACCOUNT_VERIFICATION</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="mono">2601300907250544055</span></td>
+                                        <td><span class="amount">0.0 JPY</span></td>
+                                        <td><span class="badge-tier tier-basic">Visa</span></td>
+                                        <td><span class="badge-status status-activated">SUCCESS</span></td>
+                                        <td class="text-right">
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601300907250544055', 'card')">Details</button>
+                                        </td>
+                                    </tr>
+                                    <!-- PURCHASE with REVERSED status -->
+                                    <tr class="table-row">
+                                        <td>
+                                            <div>Jan 30, 2026</div>
+                                            <div class="text-muted">01:55 PM</div>
+                                        </td>
+                                        <td><span class="mono">****0170</span></td>
+                                        <td>
+                                            <div class="type-cell">
+                                                <div class="transaction-icon-sm bg-blue">
+                                                    <i data-feather="shopping-cart"></i>
+                                                </div>
+                                                <span>PURCHASE</span>
+                                            </div>
+                                        </td>
+                                        <td><span class="mono">2601301355460544159</span></td>
+                                        <td><span class="amount negative">-10.0 SGD</span></td>
+                                        <td><span class="badge-tier tier-basic">Visa</span></td>
+                                        <td><span class="badge-status status-failed">REVERSED</span></td>
+                                        <td class="text-right">
+                                            <button class="btn btn-sm btn-secondary" onclick="openTransactionDrawer('2601301355460544159', 'card')">Details</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -2688,71 +2867,95 @@
                 </button>
             </div>
             <div class="drawer-body">
-                <div class="detail-section">
-                    <label>Transaction ID</label>
-                    <div class="detail-value">
-                        <span class="mono">TXN-456789</span>
-                        <button class="btn-icon-sm" onclick="copyToClipboard('TXN-456789')">
-                            <i data-feather="copy"></i>
-                        </button>
+                <!-- This will be populated dynamically by JavaScript based on transaction type -->
+                <div id="drawerContent">
+                    <div class="detail-section">
+                        <label>Transaction ID</label>
+                        <div class="detail-value">
+                            <span class="mono" id="drawer-txn-id">2601301835200331115</span>
+                            <button class="btn-icon-sm" onclick="copyToClipboard(document.getElementById('drawer-txn-id').textContent)">
+                                <i data-feather="copy"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div class="detail-section">
-                    <label>Status</label>
-                    <span class="badge-status status-activated">COMPLETED</span>
-                </div>
-                <div class="detail-section">
-                    <label>Type</label>
-                    <div class="detail-value">Deposit</div>
-                </div>
-                <div class="detail-section">
-                    <label>Amount</label>
-                    <div class="detail-value amount-large positive">+$500.00 USD</div>
-                </div>
-                <div class="detail-section">
-                    <label>Fee</label>
-                    <div class="detail-value">$0.00</div>
-                </div>
-                <div class="detail-divider"></div>
-                <div class="detail-section">
-                    <label>From</label>
-                    <div class="detail-value">
-                        <div>Wells Fargo Bank</div>
-                        <div class="text-muted">Account: ****1234</div>
+                    <div class="detail-section">
+                        <label>Status</label>
+                        <span class="badge-status status-activated" id="drawer-status">COMPLETED</span>
                     </div>
-                </div>
-                <div class="detail-section">
-                    <label>To</label>
-                    <div class="detail-value">
-                        <div>dtcpay USD Wallet</div>
-                        <div class="text-muted">Chris Chu</div>
+                    <div class="detail-section">
+                        <label>Type</label>
+                        <div class="detail-value" id="drawer-type">Crypto Deposit</div>
                     </div>
-                </div>
-                <div class="detail-divider"></div>
-                <div class="detail-section">
-                    <label>Timeline</label>
-                    <div class="timeline">
-                        <div class="timeline-item completed">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <div class="timeline-title">Created</div>
-                                <div class="timeline-time">Jan 19, 10:30:15 AM</div>
+                    <div class="detail-section">
+                        <label>Amount</label>
+                        <div class="detail-value amount-large positive" id="drawer-amount">+5.0 USDC</div>
+                    </div>
+                    <div class="detail-section" id="drawer-fee-section">
+                        <label>Fee</label>
+                        <div class="detail-value" id="drawer-fee">-</div>
+                    </div>
+                    <div class="detail-divider"></div>
+
+                    <!-- For Crypto Transactions -->
+                    <div class="detail-section" id="drawer-network-section">
+                        <label>Network</label>
+                        <div class="detail-value" id="drawer-network">Ethereum</div>
+                    </div>
+                    <div class="detail-section" id="drawer-hash-section">
+                        <label>Transaction Hash</label>
+                        <div class="detail-value">
+                            <span class="mono text-muted" style="font-size: 12px; word-break: break-all;" id="drawer-hash">0xd6f61591b04790668a08ae79c6d2a6b682b1de26b3c1af6c24577f291787d96b</span>
+                            <button class="btn-icon-sm" onclick="copyToClipboard(document.getElementById('drawer-hash').textContent)">
+                                <i data-feather="copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- For Fiat Transactions -->
+                    <div class="detail-section" id="drawer-method-section" style="display: none;">
+                        <label>Payment Method</label>
+                        <div class="detail-value" id="drawer-method">Bank Transfer</div>
+                    </div>
+                    <div class="detail-section" id="drawer-account-section" style="display: none;">
+                        <label>Account</label>
+                        <div class="detail-value">
+                            <div id="drawer-account-name">DBS BANK LTD</div>
+                            <div class="text-muted" id="drawer-account-number">Account: ****7878</div>
+                        </div>
+                    </div>
+
+                    <!-- For Card Transactions -->
+                    <div class="detail-section" id="drawer-card-section" style="display: none;">
+                        <label>Card</label>
+                        <div class="detail-value">
+                            <div id="drawer-card-brand">Visa</div>
+                            <div class="text-muted" id="drawer-card-number">****3733</div>
+                        </div>
+                    </div>
+                    <div class="detail-section" id="drawer-processor-section" style="display: none;">
+                        <label>Processor</label>
+                        <div class="detail-value" id="drawer-processor">COSHINE</div>
+                    </div>
+
+                    <div class="detail-divider"></div>
+                    <div class="detail-section">
+                        <label>Timestamps</label>
+                        <div class="detail-value">
+                            <div style="margin-bottom: 8px;">
+                                <span style="color: #6B7280;">Created:</span>
+                                <span id="drawer-created">Jan 30, 2026 06:35 PM</span>
+                            </div>
+                            <div id="drawer-confirmed-section">
+                                <span style="color: #6B7280;">Confirmed:</span>
+                                <span id="drawer-confirmed">Jan 30, 2026 06:40 PM</span>
                             </div>
                         </div>
-                        <div class="timeline-item completed">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <div class="timeline-title">Processing</div>
-                                <div class="timeline-time">Jan 19, 10:30:20 AM</div>
-                            </div>
-                        </div>
-                        <div class="timeline-item completed">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <div class="timeline-title">Completed</div>
-                                <div class="timeline-time">Jan 19, 10:33:00 AM</div>
-                            </div>
-                        </div>
+                    </div>
+
+                    <!-- Notes/Remarks section -->
+                    <div class="detail-section" id="drawer-remark-section" style="display: none;">
+                        <label>Remarks</label>
+                        <div class="detail-value text-muted" id="drawer-remark">-</div>
                     </div>
                 </div>
             </div>

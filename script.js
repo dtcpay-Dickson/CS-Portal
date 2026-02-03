@@ -102,9 +102,43 @@ function switchTab(tabName) {
 }
 
 // Drawer Management
-function openTransactionDrawer() {
+function openTransactionDrawer(txnId, type) {
     const drawer = document.getElementById('transactionDrawer');
     if (drawer) {
+        // Show/hide sections based on transaction type
+        const networkSection = document.getElementById('drawer-network-section');
+        const hashSection = document.getElementById('drawer-hash-section');
+        const methodSection = document.getElementById('drawer-method-section');
+        const accountSection = document.getElementById('drawer-account-section');
+        const cardSection = document.getElementById('drawer-card-section');
+        const processorSection = document.getElementById('drawer-processor-section');
+        const remarkSection = document.getElementById('drawer-remark-section');
+
+        // Hide all optional sections first
+        if (networkSection) networkSection.style.display = 'none';
+        if (hashSection) hashSection.style.display = 'none';
+        if (methodSection) methodSection.style.display = 'none';
+        if (accountSection) accountSection.style.display = 'none';
+        if (cardSection) cardSection.style.display = 'none';
+        if (processorSection) processorSection.style.display = 'none';
+        if (remarkSection) remarkSection.style.display = 'none';
+
+        // Show sections based on type
+        if (type === 'crypto') {
+            if (networkSection) networkSection.style.display = 'block';
+            if (hashSection) hashSection.style.display = 'block';
+        } else if (type === 'fiat') {
+            if (methodSection) methodSection.style.display = 'block';
+            if (accountSection) accountSection.style.display = 'block';
+        } else if (type === 'card') {
+            if (cardSection) cardSection.style.display = 'block';
+            if (processorSection) processorSection.style.display = 'block';
+        }
+
+        // In a real application, you would fetch transaction details via API
+        // and populate all the drawer fields dynamically
+        console.log('Opening transaction drawer for:', txnId, 'Type:', type);
+
         drawer.classList.add('active');
         document.body.style.overflow = 'hidden';
 
@@ -347,6 +381,31 @@ function applyCardTransactionDateFilter() {
 }
 
 window.applyCardTransactionDateFilter = applyCardTransactionDateFilter;
+
+// Wallet Transaction Date Filter
+function applyWalletDateFilter() {
+    const startDate = document.getElementById('walletStartDate').value;
+    const endDate = document.getElementById('walletEndDate').value;
+
+    if (!startDate || !endDate) {
+        showToast('Please select both start and end dates', 'error');
+        return;
+    }
+
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    if (start > end) {
+        showToast('Start date must be before end date', 'error');
+        return;
+    }
+
+    console.log('Filtering wallet transactions from', startDate, 'to', endDate);
+    showToast('Wallet transaction filter applied successfully', 'success');
+    // In a real application, this would filter the wallet transaction data
+}
+
+window.applyWalletDateFilter = applyWalletDateFilter;
 
 // AI Issue Analysis Functions
 function analyzeIssueWithAI() {
