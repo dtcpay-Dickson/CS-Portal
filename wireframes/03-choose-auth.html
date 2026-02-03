@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Portal - Choose Authentication Method (Wireframe)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #2563EB;
+            --primary-purple: #7C3AED;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --error-red: #EF4444;
+            --sidebar-bg: #1E293B;
+            --bg-light: #F8FAFC;
+            --bg-white: #FFFFFF;
+            --text-primary: #0F172A;
+            --text-secondary: #64748B;
+            --border-color: #E2E8F0;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-5: 20px;
+            --space-6: 24px;
+            --space-8: 32px;
+            --space-10: 40px;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --font-xs: 11px;
+            --font-sm: 13px;
+            --font-base: 15px;
+            --font-lg: 17px;
+            --font-xl: 20px;
+            --font-2xl: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-primary);
+        }
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: var(--sidebar-bg);
+            position: fixed;
+            height: 100vh;
+        }
+
+        .sidebar-header {
+            padding: var(--space-6);
+            color: white;
+            font-size: var(--font-xl);
+            font-weight: 700;
+        }
+
+        .main-content {
+            margin-left: 260px;
+            flex: 1;
+        }
+
+        .header {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border-color);
+            padding: var(--space-4) var(--space-8);
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: var(--font-sm);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-2);
+        }
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .header-title {
+            font-size: var(--font-xl);
+            font-weight: 600;
+        }
+
+        .content {
+            padding: var(--space-8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: var(--space-10);
+            width: 100%;
+            max-width: 720px;
+        }
+
+        .client-banner {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
+            border: 2px solid var(--primary-blue);
+            border-radius: var(--radius-lg);
+            padding: var(--space-5);
+            margin-bottom: var(--space-8);
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+        }
+
+        .client-avatar {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: var(--font-xl);
+        }
+
+        .client-info {
+            flex: 1;
+        }
+
+        .client-name {
+            font-size: var(--font-lg);
+            font-weight: 700;
+            margin-bottom: var(--space-1);
+        }
+
+        .client-details {
+            font-size: var(--font-sm);
+            color: var(--text-secondary);
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: var(--space-8);
+        }
+
+        .auth-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border-radius: var(--radius-xl);
+            margin: 0 auto var(--space-4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: white;
+            fill: none;
+        }
+
+        .auth-title {
+            font-size: var(--font-2xl);
+            font-weight: 700;
+            margin-bottom: var(--space-2);
+        }
+
+        .auth-description {
+            font-size: var(--font-base);
+            color: var(--text-secondary);
+        }
+
+        .auth-methods {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .auth-method {
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            gap: var(--space-5);
+        }
+
+        .auth-method:hover {
+            border-color: var(--primary-blue);
+            background: rgba(37, 99, 235, 0.02);
+        }
+
+        .auth-method.recommended {
+            border-color: var(--primary-blue);
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+        .method-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-light);
+            flex-shrink: 0;
+        }
+
+        .auth-method.recommended .method-icon {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+        }
+
+        .method-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--text-secondary);
+            fill: none;
+        }
+
+        .auth-method.recommended .method-icon svg {
+            stroke: white;
+        }
+
+        .method-content {
+            flex: 1;
+        }
+
+        .method-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-2);
+        }
+
+        .method-title {
+            font-size: var(--font-lg);
+            font-weight: 700;
+        }
+
+        .badge {
+            font-size: var(--font-xs);
+            padding: 3px var(--space-3);
+            border-radius: var(--radius-sm);
+            background: var(--primary-blue);
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .method-description {
+            font-size: var(--font-sm);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-3);
+        }
+
+        .method-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: var(--font-xs);
+            color: var(--text-secondary);
+        }
+
+        .feature-icon {
+            width: 16px;
+            height: 16px;
+            color: var(--success-green);
+        }
+
+        .method-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .select-btn {
+            padding: var(--space-3) var(--space-6);
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: var(--font-sm);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            transition: all 0.2s;
+        }
+
+        .select-btn:hover {
+            background: var(--primary-purple);
+            transform: translateY(-1px);
+        }
+
+        .security-note {
+            margin-top: var(--space-8);
+            padding: var(--space-5);
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: var(--radius-lg);
+            display: flex;
+            gap: var(--space-3);
+        }
+
+        .security-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--success-green);
+            flex-shrink: 0;
+        }
+
+        .security-text {
+            font-size: var(--font-sm);
+            color: var(--text-secondary);
+        }
+
+        .security-text strong {
+            color: var(--success-green);
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">CS Portal</div>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="breadcrumb">
+                    <span class="breadcrumb-item">Find Client</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                    <span class="breadcrumb-item">Mobile Search</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                    <span class="breadcrumb-item" style="color: var(--text-primary); font-weight: 600;">Choose Authentication</span>
+                </div>
+                <h1 class="header-title">Choose Authentication Method</h1>
+            </header>
+
+            <div class="content">
+                <div class="auth-card">
+                    <div class="client-banner">
+                        <div class="client-avatar">JD</div>
+                        <div class="client-info">
+                            <div class="client-name">John Doe</div>
+                            <div class="client-details">
+                                Client ID: 260115130049329 • Phone: +65 9*** **** • Email: j***@gmail.com
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="auth-header">
+                        <div class="auth-icon">
+                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <h2 class="auth-title">Verify Client Identity</h2>
+                        <p class="auth-description">Select the best authentication method for this client</p>
+                    </div>
+
+                    <div class="auth-methods">
+                        <!-- Method 1: App Authorization -->
+                        <div class="auth-method recommended" onclick="goToAppAuth()">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                    <path d="M12 18h.01"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div class="method-content">
+                                <div class="method-header">
+                                    <div class="method-title">App Authorization</div>
+                                    <span class="badge">Fastest</span>
+                                </div>
+                                <div class="method-description">
+                                    Client authorizes access directly from their mobile app with biometric or PIN verification
+                                </div>
+                                <div class="method-features">
+                                    <div class="feature">
+                                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                        <span>Most Secure</span>
+                                    </div>
+                                    <div class="feature">
+                                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                        <span>No codes needed</span>
+                                    </div>
+                                    <div class="feature">
+                                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                        <span>~10 seconds</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="method-action">
+                                <button class="select-btn">
+                                    <span>Select</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Method 2: OTP -->
+                        <div class="auth-method" onclick="goToOTP()">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                    <line x1="9" y1="10" x2="15" y2="10"></line>
+                                </svg>
+                            </div>
+                            <div class="method-content">
+                                <div class="method-header">
+                                    <div class="method-title">SMS / Email OTP</div>
+                                </div>
+                                <div class="method-description">
+                                    Send a one-time password to client's registered mobile number or email address
+                                </div>
+                                <div class="method-features">
+                                    <div class="feature">
+                                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                        <span>Widely accessible</span>
+                                    </div>
+                                    <div class="feature">
+                                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                        <span>6-digit code</span>
+                                    </div>
+                                    <div class="feature">
+                                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                        <span>~30 seconds</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="method-action">
+                                <button class="select-btn">
+                                    <span>Select</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Method 3: Personal Verification -->
+                        <div class="auth-method" onclick="goToPersonal()">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <div class="method-content">
+                                <div class="method-header">
+                                    <div class="method-title">Personal Information Verification</div>
+                                </div>
+                                <div class="method-description">
+                                    Ask client to verify personal details (last 4 digits of ID, date of birth, etc.)
+                                </div>
+                                <div class="method-features">
+                                    <div class="feature">
+                                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                        <span>No app required</span>
+                                    </div>
+                                    <div class="feature">
+                                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                        <span>Voice call friendly</span>
+                                    </div>
+                                    <div class="feature">
+                                        <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                        <span>~45 seconds</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="method-action">
+                                <button class="select-btn">
+                                    <span>Select</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="security-note">
+                        <svg class="security-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        <div class="security-text">
+                            <strong>Authentication-First Security:</strong> All client data remains masked until authentication is complete. This session will be valid for 15 minutes with one extension allowed.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function goToAppAuth() {
+            window.location.href = '04-client-detail.html';
+        }
+
+        function goToOTP() {
+            window.location.href = '04-client-detail.html';
+        }
+
+        function goToPersonal() {
+            window.location.href = '04-client-detail.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Portal - Find Client (Wireframe)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Colors */
+            --primary-blue: #2563EB;
+            --primary-purple: #7C3AED;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --error-red: #EF4444;
+            --sidebar-bg: #1E293B;
+            --sidebar-hover: #334155;
+            --bg-light: #F8FAFC;
+            --bg-white: #FFFFFF;
+            --text-primary: #0F172A;
+            --text-secondary: #64748B;
+            --border-color: #E2E8F0;
+
+            /* Spacing */
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-5: 20px;
+            --space-6: 24px;
+            --space-8: 32px;
+            --space-10: 40px;
+            --space-12: 48px;
+
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+
+            /* Typography */
+            --font-xs: 11px;
+            --font-sm: 13px;
+            --font-base: 15px;
+            --font-lg: 17px;
+            --font-xl: 20px;
+            --font-2xl: 24px;
+            --font-3xl: 30px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        /* Layout */
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: var(--sidebar-bg);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+        }
+
+        .sidebar-header {
+            padding: var(--space-6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-logo {
+            font-size: var(--font-xl);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .sidebar-logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border-radius: var(--radius-md);
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            padding: var(--space-4) 0;
+        }
+
+        .nav-item {
+            padding: var(--space-3) var(--space-6);
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            font-size: var(--font-sm);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-item:hover {
+            background: var(--sidebar-hover);
+            color: white;
+        }
+
+        .nav-item.active {
+            background: var(--sidebar-hover);
+            color: white;
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-sm);
+        }
+
+        .sidebar-footer {
+            padding: var(--space-6);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .agent-info {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .agent-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: var(--font-sm);
+        }
+
+        .agent-details {
+            flex: 1;
+        }
+
+        .agent-name {
+            font-weight: 600;
+            font-size: var(--font-sm);
+        }
+
+        .agent-id {
+            font-size: var(--font-xs);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 260px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border-color);
+            padding: var(--space-4) var(--space-8);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .header-title {
+            font-size: var(--font-xl);
+            font-weight: 600;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+        }
+
+        .header-btn {
+            padding: var(--space-2) var(--space-4);
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: var(--font-sm);
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .header-btn:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        /* Content Area */
+        .content {
+            flex: 1;
+            padding: var(--space-8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Find Client Card */
+        .find-client-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+            padding: var(--space-10);
+            width: 100%;
+            max-width: 580px;
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: var(--space-8);
+        }
+
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border-radius: var(--radius-xl);
+            margin: 0 auto var(--space-4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: white;
+            fill: none;
+        }
+
+        .card-title {
+            font-size: var(--font-2xl);
+            font-weight: 700;
+            margin-bottom: var(--space-2);
+        }
+
+        .card-description {
+            font-size: var(--font-base);
+            color: var(--text-secondary);
+        }
+
+        /* Search Methods */
+        .search-methods {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .method-section-title {
+            font-size: var(--font-sm);
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: var(--space-2);
+        }
+
+        .search-method {
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-5);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+        }
+
+        .search-method:hover {
+            border-color: var(--primary-blue);
+            background: rgba(37, 99, 235, 0.02);
+        }
+
+        .search-method.primary {
+            border-color: var(--primary-blue);
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+        .method-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-light);
+            flex-shrink: 0;
+        }
+
+        .search-method.primary .method-icon {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+        }
+
+        .method-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--text-secondary);
+            fill: none;
+        }
+
+        .search-method.primary .method-icon svg {
+            stroke: white;
+        }
+
+        .method-content {
+            flex: 1;
+        }
+
+        .method-title {
+            font-size: var(--font-base);
+            font-weight: 600;
+            margin-bottom: var(--space-1);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .badge {
+            font-size: var(--font-xs);
+            padding: 2px var(--space-2);
+            border-radius: var(--radius-sm);
+            background: var(--primary-blue);
+            color: white;
+            font-weight: 600;
+        }
+
+        .method-description {
+            font-size: var(--font-sm);
+            color: var(--text-secondary);
+        }
+
+        .method-arrow {
+            width: 24px;
+            height: 24px;
+            color: var(--text-secondary);
+        }
+
+        .search-method:hover .method-arrow {
+            color: var(--primary-blue);
+            transform: translateX(4px);
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: var(--space-6) 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .divider span {
+            padding: 0 var(--space-3);
+            color: var(--text-secondary);
+            font-size: var(--font-sm);
+        }
+
+        /* Quick Access */
+        .quick-access {
+            margin-top: var(--space-6);
+            padding-top: var(--space-6);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .quick-access-title {
+            font-size: var(--font-sm);
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-3);
+        }
+
+        .quick-access-items {
+            display: flex;
+            gap: var(--space-2);
+            flex-wrap: wrap;
+        }
+
+        .quick-access-btn {
+            padding: var(--space-2) var(--space-4);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-white);
+            cursor: pointer;
+            font-size: var(--font-sm);
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .quick-access-btn:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+            background: rgba(37, 99, 235, 0.02);
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <div class="sidebar-logo-icon"></div>
+                    <span>CS Portal</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-item active">
+                    <div class="nav-icon"></div>
+                    <span>Find Client</span>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-icon"></div>
+                    <span>Active Sessions</span>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-icon"></div>
+                    <span>Search History</span>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-icon"></div>
+                    <span>Reports</span>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="agent-info">
+                    <div class="agent-avatar">DC</div>
+                    <div class="agent-details">
+                        <div class="agent-name">Dickson Chan</div>
+                        <div class="agent-id">Agent ID: DC001</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h1 class="header-title">Find Client</h1>
+                <div class="header-actions">
+                    <button class="header-btn">Help</button>
+                    <button class="header-btn">Settings</button>
+                </div>
+            </header>
+
+            <div class="content">
+                <div class="find-client-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </div>
+                        <h2 class="card-title">Find Client to Assist</h2>
+                        <p class="card-description">Select a method to search for the client who needs assistance</p>
+                    </div>
+
+                    <div class="search-methods">
+                        <div class="method-section-title">Primary Method</div>
+
+                        <div class="search-method primary" onclick="goToMobileSearch()">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                                </svg>
+                            </div>
+                            <div class="method-content">
+                                <div class="method-title">
+                                    Mobile Number
+                                    <span class="badge">RECOMMENDED</span>
+                                </div>
+                                <div class="method-description">Search by client's registered mobile number</div>
+                            </div>
+                            <svg class="method-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+
+                        <div class="divider">
+                            <span>OR</span>
+                        </div>
+
+                        <div class="method-section-title">Alternative Methods</div>
+
+                        <div class="search-method">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                </svg>
+                            </div>
+                            <div class="method-content">
+                                <div class="method-title">Client ID</div>
+                                <div class="method-description">Search using unique client identifier</div>
+                            </div>
+                            <svg class="method-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+
+                        <div class="search-method">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="method-content">
+                                <div class="method-title">Email Address</div>
+                                <div class="method-description">Search by registered email address</div>
+                            </div>
+                            <svg class="method-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+
+                        <div class="search-method">
+                            <div class="method-icon">
+                                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="method-content">
+                                <div class="method-title">Salesforce Case</div>
+                                <div class="method-description">Import client from existing Salesforce case</div>
+                            </div>
+                            <svg class="method-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="quick-access">
+                        <div class="quick-access-title">Quick Access</div>
+                        <div class="quick-access-items">
+                            <button class="quick-access-btn">Recent Searches</button>
+                            <button class="quick-access-btn">Active Sessions (0)</button>
+                            <button class="quick-access-btn">Advanced Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function goToMobileSearch() {
+            window.location.href = '02-mobile-search.html';
+        }
+    </script>
+</body>
+</html>

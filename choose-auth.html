@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Authentication Method - dtcpay CS Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <div class="auth-page-container">
+        <div class="auth-header">
+            <button class="back-button" onclick="history.back()">
+                <i data-feather="arrow-left"></i>
+            </button>
+            <h1 class="auth-header-title">Choose Authentication Method</h1>
+        </div>
+
+        <div class="auth-content">
+            <div class="auth-card">
+                <div class="client-banner">
+                    <div class="client-banner-avatar">JD</div>
+                    <div class="client-banner-info">
+                        <div class="client-banner-name">John Doe</div>
+                        <div class="client-banner-details">ID: 260115130049329 • Phone: +65 9*** **** • Email: j***@gmail.com</div>
+                    </div>
+                </div>
+
+                <div class="find-client-header">
+                    <div class="find-client-icon">
+                        <i data-feather="lock"></i>
+                    </div>
+                    <h2 class="find-client-title">Verify Client Identity</h2>
+                    <p class="find-client-description">Select the best authentication method for this client</p>
+                </div>
+
+                <div class="auth-methods">
+                    <!-- App Authorization -->
+                    <div class="auth-method recommended" onclick="authenticateClient('app')">
+                        <div class="auth-method-icon">
+                            <i data-feather="smartphone"></i>
+                        </div>
+                        <div class="auth-method-content">
+                            <div class="auth-method-header">
+                                <div class="auth-method-title">App Authorization</div>
+                                <span class="auth-method-badge">Fastest</span>
+                            </div>
+                            <div class="auth-method-description">Client authorizes access directly from their mobile app with biometric or PIN verification</div>
+                            <div class="auth-method-features">
+                                <div class="auth-feature">
+                                    <i data-feather="check"></i>
+                                    <span>Most Secure</span>
+                                </div>
+                                <div class="auth-feature">
+                                    <i data-feather="check"></i>
+                                    <span>No codes needed</span>
+                                </div>
+                                <div class="auth-feature">
+                                    <i data-feather="check"></i>
+                                    <span>~10 seconds</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="select-auth-btn">
+                            <span>Select</span>
+                            <i data-feather="chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- OTP -->
+                    <div class="auth-method" onclick="authenticateClient('otp')">
+                        <div class="auth-method-icon">
+                            <i data-feather="message-square"></i>
+                        </div>
+                        <div class="auth-method-content">
+                            <div class="auth-method-header">
+                                <div class="auth-method-title">SMS / Email OTP</div>
+                            </div>
+                            <div class="auth-method-description">Send a one-time password to client's registered mobile number or email address</div>
+                            <div class="auth-method-features">
+                                <div class="auth-feature">
+                                    <i data-feather="check"></i>
+                                    <span>Widely accessible</span>
+                                </div>
+                                <div class="auth-feature">
+                                    <i data-feather="check"></i>
+                                    <span>6-digit code</span>
+                                </div>
+                                <div class="auth-feature">
+                                    <i data-feather="check"></i>
+                                    <span>~30 seconds</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="select-auth-btn">
+                            <span>Select</span>
+                            <i data-feather="chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Personal Verification -->
+                    <div class="auth-method" onclick="authenticateClient('personal')">
+                        <div class="auth-method-icon">
+                            <i data-feather="user-check"></i>
+                        </div>
+                        <div class="auth-method-content">
+                            <div class="auth-method-header">
+                                <div class="auth-method-title">Personal Information Verification</div>
+                            </div>
+                            <div class="auth-method-description">Ask client to verify personal details (last 4 digits of ID, date of birth, etc.)</div>
+                            <div class="auth-method-features">
+                                <div class="auth-feature">
+                                    <i data-feather="check"></i>
+                                    <span>No app required</span>
+                                </div>
+                                <div class="auth-feature">
+                                    <i data-feather="check"></i>
+                                    <span>Voice call friendly</span>
+                                </div>
+                                <div class="auth-feature">
+                                    <i data-feather="check"></i>
+                                    <span>~45 seconds</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="select-auth-btn">
+                            <span>Select</span>
+                            <i data-feather="chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="skip-auth-section">
+                    <div class="skip-auth-info">
+                        <div class="skip-auth-title">Skip Authentication</div>
+                        <div class="skip-auth-desc">Not recommended - Only for internal investigations</div>
+                    </div>
+                    <button type="button" class="skip-auth-btn" onclick="showSkipConfirmation()">
+                        Skip
+                    </button>
+                </div>
+
+                <div class="security-note">
+                    <i data-feather="shield"></i>
+                    <div class="security-note-text">
+                        <strong>Authentication-First Security:</strong> All client data remains masked until authentication is complete. This session will be valid for 15 minutes with one extension allowed.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skip Confirmation Modal -->
+    <div class="modal-overlay" id="skipModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i data-feather="alert-triangle"></i>
+                </div>
+                <h2 class="modal-title">Skip Authentication?</h2>
+                <p class="modal-description">Are you sure you want to proceed without authentication?</p>
+            </div>
+
+            <div class="modal-warning">
+                <p class="modal-warning-text">
+                    <strong>Warning:</strong> Skipping authentication should only be done for internal investigations where the client is not present. 
+                    This action will be logged and reviewed. You confirm that:
+                </p>
+                <ul class="modal-warning-text" style="margin-top: 8px; padding-left: 20px;">
+                    <li>The client is not on the phone</li>
+                    <li>This is for investigation purposes only</li>
+                    <li>You have proper authorization to view this account</li>
+                </ul>
+            </div>
+
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-cancel" onclick="closeSkipModal()">
+                    Cancel
+                </button>
+                <button class="modal-btn modal-btn-confirm" onclick="confirmSkip()">
+                    Yes, Skip Authentication
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        feather.replace();
+
+        function authenticateClient(method) {
+            // Simulate authentication
+            alert('Authentication method: ' + method + '\nRedirecting to client portal...');
+            window.location.href = 'client-portal.html?authenticated=true';
+        }
+
+        function showSkipConfirmation() {
+            document.getElementById('skipModal').classList.add('active');
+            feather.replace();
+        }
+
+        function closeSkipModal() {
+            document.getElementById('skipModal').classList.remove('active');
+        }
+
+        function confirmSkip() {
+            alert('Authentication skipped. This action has been logged.\nRedirecting to client portal...');
+            window.location.href = 'client-portal.html?authenticated=skip';
+        }
+    </script>
+</body>
+</html>

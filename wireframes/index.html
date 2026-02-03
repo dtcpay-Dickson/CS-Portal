@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Portal - UI/UX Wireframes Index</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #2563EB;
+            --primary-purple: #7C3AED;
+            --bg-light: #F8FAFC;
+            --bg-white: #FFFFFF;
+            --text-primary: #0F172A;
+            --text-secondary: #64748B;
+            --border-color: #E2E8F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            padding: 60px 40px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border-radius: 20px;
+            margin: 0 auto 20px;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .version {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-blue);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .intro {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro h2 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .intro p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .feature {
+            padding: 16px;
+            background: var(--bg-light);
+            border-radius: 12px;
+            font-size: 14px;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .feature-desc {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .wireframes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .wireframe-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .wireframe-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.15);
+            border-color: var(--primary-blue);
+        }
+
+        .wireframe-preview {
+            height: 240px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wireframe-preview::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.1) 10px,
+                rgba(255, 255, 255, 0.1) 20px
+            );
+        }
+
+        .preview-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border-radius: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .wireframe-info {
+            padding: 24px;
+        }
+
+        .wireframe-number {
+            font-size: 12px;
+            color: var(--primary-blue);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .wireframe-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .wireframe-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .wireframe-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .wireframe-link:hover {
+            transform: translateX(4px);
+        }
+
+        .design-system {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .design-system h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .color-swatch {
+            text-align: center;
+        }
+
+        .color-box {
+            height: 80px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-name {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .color-value {
+            font-size: 11px;
+            color: var(--text-secondary);
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+
+        .footer {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 2px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo"></div>
+            <h1>CS Portal Wireframes</h1>
+            <p class="subtitle">UI/UX Design System & Interactive Wireframes</p>
+            <span class="version">Version 2.0</span>
+        </div>
+
+        <div class="intro">
+            <h2>📋 About This Project</h2>
+            <p>
+                These wireframes represent the complete user flow for the TOP 2.0 CS Portal - a secure,
+                authentication-first customer service portal designed for CS agents to access client information
+                safely and efficiently.
+            </p>
+            <p>
+                The portal integrates with Salesforce Service Cloud and Nice CXOne, providing CS agents with
+                the tools they need to assist clients effectively while maintaining strict security protocols.
+            </p>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-title">🔒 Authentication-First</div>
+                    <div class="feature-desc">Client verification before data access</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-title">📱 3 Auth Methods</div>
+                    <div class="feature-desc">App, OTP, and personal verification</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-title">⏱️ Session Management</div>
+                    <div class="feature-desc">15-minute time-limited access</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-title">🎨 Design System</div>
+                    <div class="feature-desc">Complete component library</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-title">📊 Real-time Data</div>
+                    <div class="feature-desc">Live client information access</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-title">🔍 Advanced Search</div>
+                    <div class="feature-desc">Multiple search methods</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">
+            <span class="section-number">1</span>
+            Main User Flow Wireframes
+        </h2>
+
+        <div class="wireframes-grid">
+            <div class="wireframe-card">
+                <div class="wireframe-preview">
+                    <div class="preview-icon"></div>
+                </div>
+                <div class="wireframe-info">
+                    <div class="wireframe-number">Page 1</div>
+                    <h3 class="wireframe-title">Find Client</h3>
+                    <p class="wireframe-description">
+                        Entry point where CS agents select their preferred search method. Features mobile number
+                        search as the primary recommended option.
+                    </p>
+                    <a href="01-find-client.html" class="wireframe-link">
+                        <span>View Wireframe</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="wireframe-card">
+                <div class="wireframe-preview">
+                    <div class="preview-icon"></div>
+                </div>
+                <div class="wireframe-info">
+                    <div class="wireframe-number">Page 2</div>
+                    <h3 class="wireframe-title">Mobile Number Search</h3>
+                    <p class="wireframe-description">
+                        Smart phone number input with auto-formatting, country code selection, and E.164
+                        normalization. Supports multiple input formats.
+                    </p>
+                    <a href="02-mobile-search.html" class="wireframe-link">
+                        <span>View Wireframe</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="wireframe-card">
+                <div class="wireframe-preview">
+                    <div class="preview-icon"></div>
+                </div>
+                <div class="wireframe-info">
+                    <div class="wireframe-number">Page 3</div>
+                    <h3 class="wireframe-title">Choose Authentication Method</h3>
+                    <p class="wireframe-description">
+                        Authentication method selection with three options: App Authorization (recommended),
+                        SMS/Email OTP, and Personal Information Verification.
+                    </p>
+                    <a href="03-choose-auth.html" class="wireframe-link">
+                        <span>View Wireframe</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="wireframe-card">
+                <div class="wireframe-preview">
+                    <div class="preview-icon"></div>
+                </div>
+                <div class="wireframe-info">
+                    <div class="wireframe-number">Page 4</div>
+                    <h3 class="wireframe-title">Client Detail View</h3>
+                    <p class="wireframe-description">
+                        Complete client dashboard with tabbed navigation showing overview, transactions, wallets,
+                        cards, and activity logs. Includes session timer and quick actions.
+                    </p>
+                    <a href="04-client-detail.html" class="wireframe-link">
+                        <span>View Wireframe</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="wireframe-card">
+                <div class="wireframe-preview">
+                    <div class="preview-icon"></div>
+                </div>
+                <div class="wireframe-info">
+                    <div class="wireframe-number">Page 5</div>
+                    <h3 class="wireframe-title">Client List View</h3>
+                    <p class="wireframe-description">
+                        Search results table showing multiple clients when search returns more than one match.
+                        Includes sorting, filtering, and quick actions.
+                    </p>
+                    <a href="05-client-list.html" class="wireframe-link">
+                        <span>View Wireframe</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">
+            <span class="section-number">2</span>
+            Design System
+        </h2>
+
+        <div class="design-system">
+            <h3>🎨 Color Palette</h3>
+            <div class="color-palette">
+                <div class="color-swatch">
+                    <div class="color-box" style="background: #2563EB;"></div>
+                    <div class="color-name">Primary Blue</div>
+                    <div class="color-value">#2563EB</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background: #7C3AED;"></div>
+                    <div class="color-name">Primary Purple</div>
+                    <div class="color-value">#7C3AED</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background: #10B981;"></div>
+                    <div class="color-name">Success Green</div>
+                    <div class="color-value">#10B981</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background: #F59E0B;"></div>
+                    <div class="color-name">Warning Amber</div>
+                    <div class="color-value">#F59E0B</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background: #EF4444;"></div>
+                    <div class="color-name">Error Red</div>
+                    <div class="color-value">#EF4444</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background: #1E293B;"></div>
+                    <div class="color-name">Sidebar</div>
+                    <div class="color-value">#1E293B</div>
+                </div>
+            </div>
+
+            <h3>📐 Key Design Principles</h3>
+            <ul style="color: var(--text-secondary); margin-left: 24px;">
+                <li>Typography: Inter font family (300-700 weights)</li>
+                <li>Spacing: 4px base unit system (space-1 through space-16)</li>
+                <li>Border Radius: sm(4px), md(8px), lg(12px), xl(16px)</li>
+                <li>Breakpoints: sm(640px), md(768px), lg(1024px), xl(1280px)</li>
+                <li>Layout: 12-column grid system with responsive breakpoints</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p><strong>TOP 2.0 CS Portal</strong> - UI/UX Wireframes</p>
+            <p>Created: February 2026 | Design System Version 2.0</p>
+        </div>
+    </div>
+</body>
+</html>

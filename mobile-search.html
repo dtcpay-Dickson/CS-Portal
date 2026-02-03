@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search by Mobile Number - dtcpay CS Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <div class="auth-page-container">
+        <div class="auth-header">
+            <button class="back-button" onclick="window.location.href='index.html'">
+                <i data-feather="arrow-left"></i>
+            </button>
+            <h1 class="auth-header-title">Search by Mobile Number</h1>
+        </div>
+
+        <div class="auth-content">
+            <div class="auth-card">
+                <div class="find-client-header">
+                    <div class="find-client-icon">
+                        <i data-feather="smartphone"></i>
+                    </div>
+                    <h2 class="find-client-title">Enter Mobile Number</h2>
+                    <p class="find-client-description">Enter the client's registered mobile number to begin authentication</p>
+                </div>
+
+                <form onsubmit="handleSearch(event)" style="margin-top: 32px;">
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px;">Mobile Number</label>
+                        <div style="display: flex; gap: 12px;">
+                            <select id="countryCode" style="width: 140px; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 12px; font-size: 15px; font-family: 'Inter', sans-serif;">
+                                <option value="+65" selected>🇸🇬 +65</option>
+                                <option value="+1">🇺🇸 +1</option>
+                                <option value="+44">🇬🇧 +44</option>
+                                <option value="+60">🇲🇾 +60</option>
+                                <option value="+86">🇨🇳 +86</option>
+                            </select>
+                            <input type="tel" id="phoneInput" placeholder="9123 4567" required autocomplete="off"
+                                style="flex: 1; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 12px; font-size: 17px; letter-spacing: 1px; font-family: 'Inter', sans-serif;">
+                        </div>
+                        <div style="margin-top: 8px; font-size: 13px; color: #6B7280; display: flex; align-items: center; gap: 6px;">
+                            <i data-feather="info" style="width: 16px; height: 16px;"></i>
+                            <span>Enter the mobile number exactly as registered in the system</span>
+                        </div>
+                    </div>
+
+                    <div id="searchResult" style="display: none; padding: 20px; background: rgba(16, 185, 129, 0.05); border: 2px solid #10B981; border-radius: 12px; margin-bottom: 20px;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                            <div style="width: 32px; height: 32px; background: #10B981; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <i data-feather="check" style="width: 20px; height: 20px; stroke: white;"></i>
+                            </div>
+                            <div style="font-weight: 600; color: #10B981;">Client Found</div>
+                        </div>
+                        <p style="font-size: 14px; color: #6B7280; margin-bottom: 16px;">1 client found matching this mobile number. Proceed to authentication.</p>
+                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px; background: white; border-radius: 8px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">JD</div>
+                                <div>
+                                    <div style="font-weight: 600;">John Doe</div>
+                                    <div style="font-size: 13px; color: #6B7280;">ID: 260115130049329 • +65 9*** ****</div>
+                                </div>
+                            </div>
+                            <button type="button" onclick="window.location.href='choose-auth.html'" style="padding: 8px 20px; background: #667eea; color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                                <span>Continue</span>
+                                <i data-feather="chevron-right" style="width: 16px; height: 16px;"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="searchBtn" style="width: 100%; padding: 14px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i data-feather="search" style="width: 20px; height: 20px;"></i>
+                        <span>Search Client</span>
+                    </button>
+                </form>
+
+                <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #E5E7EB;">
+                    <div style="font-size: 13px; font-weight: 600; color: #6B7280; margin-bottom: 12px;">Accepted Formats</div>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #6B7280;">
+                            <i data-feather="check" style="width: 16px; height: 16px; stroke: #10B981;"></i>
+                            <span style="font-family: 'SF Mono', 'Monaco', monospace; font-weight: 500;">9123 4567</span>
+                            <span>(Local format with space)</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #6B7280;">
+                            <i data-feather="check" style="width: 16px; height: 16px; stroke: #10B981;"></i>
+                            <span style="font-family: 'SF Mono', 'Monaco', monospace; font-weight: 500;">91234567</span>
+                            <span>(Local format without space)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        feather.replace();
+
+        const phoneInput = document.getElementById('phoneInput');
+        const searchResult = document.getElementById('searchResult');
+
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 4) {
+                value = value.substring(0, 4) + ' ' + value.substring(4, 8);
+            }
+            e.target.value = value;
+        });
+
+        function handleSearch(e) {
+            e.preventDefault();
+            const btn = document.getElementById('searchBtn');
+            btn.innerHTML = '<span>Searching...</span>';
+            btn.style.opacity = '0.7';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                searchResult.style.display = 'block';
+                feather.replace();
+                btn.innerHTML = '<i data-feather="search"></i><span>Search Client</span>';
+                btn.style.opacity = '1';
+                btn.disabled = false;
+                feather.replace();
+            }, 800);
+        }
+    </script>
+</body>
+</html>
