@@ -2442,3 +2442,415 @@ body {
 .modal-btn-confirm:hover {
     background: #DC2626;
 }
+
+/* ===================================
+   RESPONSIVE / MOBILE-FRIENDLY STYLES
+   =================================== */
+
+/* Tablet and smaller */
+@media (max-width: 768px) {
+    /* Find Client Page */
+    .find-client-container {
+        padding: 20px;
+    }
+
+    .find-client-logo {
+        position: static;
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    .find-client-card {
+        padding: 32px 24px;
+        max-width: 100%;
+    }
+
+    .find-client-title {
+        font-size: 24px;
+    }
+
+    .find-client-description {
+        font-size: 14px;
+    }
+
+    .find-client-icon {
+        width: 64px;
+        height: 64px;
+    }
+
+    .find-client-icon svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    .search-method {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .method-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .method-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .method-title {
+        font-size: 15px;
+    }
+
+    .method-description {
+        font-size: 13px;
+    }
+
+    .quick-actions {
+        flex-direction: column;
+    }
+
+    .quick-action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .find-client-agent {
+        width: 100%;
+    }
+
+    /* Auth Pages */
+    .auth-header {
+        padding: 12px 16px;
+    }
+
+    .auth-header-title {
+        font-size: 18px;
+    }
+
+    .auth-content {
+        padding: 24px 16px;
+    }
+
+    .auth-card {
+        padding: 32px 24px;
+        max-width: 100%;
+    }
+
+    .client-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 16px;
+    }
+
+    .client-banner-avatar {
+        margin: 0 auto;
+    }
+
+    .client-banner-name {
+        font-size: 16px;
+    }
+
+    .client-banner-details {
+        font-size: 12px;
+    }
+
+    /* Auth Methods */
+    .auth-method {
+        flex-direction: column;
+        padding: 20px;
+        gap: 16px;
+        text-align: center;
+    }
+
+    .auth-method-icon {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto;
+    }
+
+    .auth-method-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .auth-method-title {
+        font-size: 16px;
+    }
+
+    .auth-method-features {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .select-auth-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .skip-auth-section {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .skip-auth-btn {
+        width: 100%;
+    }
+
+    /* Modal */
+    .modal-content {
+        padding: 24px;
+        margin: 20px;
+    }
+
+    .modal-title {
+        font-size: 20px;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+
+    .modal-btn {
+        width: 100%;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    .find-client-card {
+        padding: 24px 16px;
+    }
+
+    .find-client-title {
+        font-size: 22px;
+    }
+
+    .find-client-icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .find-client-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .search-method {
+        padding: 14px;
+    }
+
+    .method-title {
+        font-size: 14px;
+        flex-wrap: wrap;
+    }
+
+    .method-badge {
+        font-size: 9px;
+    }
+
+    .method-description {
+        font-size: 12px;
+    }
+
+    .auth-card {
+        padding: 24px 16px;
+    }
+
+    .auth-method {
+        padding: 16px;
+    }
+
+    .auth-method-title {
+        font-size: 15px;
+    }
+
+    .auth-method-description {
+        font-size: 13px;
+    }
+
+    .auth-feature {
+        font-size: 11px;
+    }
+
+    .security-note {
+        padding: 16px;
+        font-size: 13px;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+
+    .modal-icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .modal-title {
+        font-size: 18px;
+    }
+
+    .modal-description {
+        font-size: 14px;
+    }
+}
+
+/* Landscape mobile */
+@media (max-width: 896px) and (orientation: landscape) {
+    .find-client-container {
+        padding: 20px;
+        min-height: auto;
+    }
+
+    .auth-content {
+        padding: 20px 16px;
+    }
+
+    .find-client-header {
+        margin-bottom: 24px;
+    }
+
+    .auth-card {
+        margin: 0 auto;
+    }
+}
+
+/* Large screens - optimize spacing */
+@media (min-width: 1440px) {
+    .find-client-card {
+        max-width: 680px;
+    }
+
+    .auth-card {
+        max-width: 680px;
+    }
+}
+
+/* High DPI / Retina displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .find-client-icon,
+    .method-icon,
+    .auth-method-icon {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Touch-friendly adjustments */
+@media (hover: none) and (pointer: coarse) {
+    .search-method,
+    .auth-method,
+    .quick-action-btn,
+    .skip-auth-btn,
+    .select-auth-btn {
+        min-height: 48px;
+        padding: 16px;
+    }
+
+    .back-button {
+        min-width: 48px;
+        min-height: 48px;
+    }
+
+    .method-arrow {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .search-method:hover,
+    .auth-method:hover,
+    .select-auth-btn:hover {
+        transform: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .find-client-container {
+        background: linear-gradient(135deg, #4c1d95 0%, #581c87 100%);
+    }
+
+    .find-client-card,
+    .auth-card {
+        background: #1F2937;
+        color: #F9FAFB;
+    }
+
+    .find-client-title,
+    .auth-header-title,
+    .client-banner-name,
+    .auth-method-title {
+        color: #F9FAFB;
+    }
+
+    .find-client-description,
+    .method-description,
+    .client-banner-details,
+    .auth-method-description {
+        color: #D1D5DB;
+    }
+
+    .search-method,
+    .auth-method {
+        border-color: #374151;
+        background: #111827;
+    }
+
+    .search-method:hover,
+    .auth-method:hover {
+        background: #1F2937;
+        border-color: #667eea;
+    }
+
+    .method-icon {
+        background: #374151;
+    }
+
+    .modal-content {
+        background: #1F2937;
+        color: #F9FAFB;
+    }
+
+    .modal-title {
+        color: #F9FAFB;
+    }
+
+    .modal-btn-cancel {
+        background: #374151;
+        color: #F9FAFB;
+    }
+
+    .modal-btn-cancel:hover {
+        background: #4B5563;
+    }
+}
+
+/* Print styles */
+@media print {
+    .find-client-container {
+        background: white;
+    }
+
+    .back-button,
+    .skip-auth-btn,
+    .quick-action-btn {
+        display: none;
+    }
+
+    .find-client-card,
+    .auth-card {
+        box-shadow: none;
+        border: 1px solid #E5E7EB;
+    }
+}
