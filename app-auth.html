@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Authorization - dtcpay CS Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo" style="flex-direction: column; align-items: center;">
+                <img src="https://dtcpay.com/wp-content/themes/dtc/frontend/resources/img/dtc-logo.svg" alt="dtcpay" style="height: 40px; width: auto; margin-bottom: 8px;" onerror="this.style.display='none'">
+                <div style="display: flex; flex-direction: column; gap: 2px; align-items: center; text-align: center;">
+                    <span style="font-size: 16px; font-weight: 700; color: var(--white); letter-spacing: 0.5px;">TOP 2.0</span>
+                    <span style="font-size: 13px; font-weight: 500; color: var(--sidebar-text);">CS Portal</span>
+                </div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">AUTHENTICATION</div>
+                <a href="index.html" class="nav-item">
+                    <i data-feather="search"></i>
+                    <span>Find Client</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <i data-feather="smartphone"></i>
+                    <span>App Authorization</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="user-avatar-small">CS</div>
+                <div class="user-info">
+                    <div class="user-name-small">CS Agent</div>
+                    <div class="user-role">Customer Support</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Top Navigation Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i data-feather="menu"></i>
+                </button>
+                <button class="btn btn-sm btn-secondary" onclick="history.back()" style="margin-right: 16px;">
+                    <i data-feather="arrow-left" style="width: 14px; height: 14px;"></i>
+                    Back
+                </button>
+                <h1 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0;">App Authorization</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="user-menu">
+                    <div class="user-avatar">CS</div>
+                    <span class="user-name">CS Agent</span>
+                    <i data-feather="chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content" style="background: #F9FAFB; min-height: 100vh;">
+            <div style="max-width: 800px; margin: 0 auto; padding: 40px 20px;">
+                <!-- Client Banner -->
+                <div style="margin-bottom: 32px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 24px; border-radius: 16px; color: white; box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div style="width: 60px; height: 60px; background: rgba(255, 255, 255, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 22px; backdrop-filter: blur(10px); border: 3px solid rgba(255, 255, 255, 0.3);">JD</div>
+                        <div style="flex: 1;">
+                            <div style="font-weight: 700; font-size: 20px; margin-bottom: 6px; letter-spacing: -0.5px;">John Doe</div>
+                            <div style="font-size: 13px; opacity: 0.95; font-weight: 500;">ID: 260115130049329 • +65 9*** ****</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auth Status Card -->
+                <div style="background: white; border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
+                    <div style="text-align: center; margin-bottom: 32px;">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px;">
+                            <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(102, 126, 234, 0.25);">
+                                <i data-feather="smartphone" style="width: 28px; height: 28px; color: white;"></i>
+                            </div>
+                            <h2 style="font-size: 24px; font-weight: 700; color: #111827; margin: 0; letter-spacing: -0.5px;">App Authorization</h2>
+                        </div>
+                        <p style="font-size: 15px; color: #6B7280; line-height: 1.5; margin: 0;">Client will approve access from their mobile app</p>
+                    </div>
+
+                    <!-- Status Display -->
+                    <div id="statusDisplay">
+                        <!-- Initial State -->
+                        <div id="initialState" style="text-align: center; padding: 40px 20px;">
+                            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);">
+                                <i data-feather="smartphone" style="width: 50px; height: 50px; color: white;"></i>
+                            </div>
+                            <h3 style="font-size: 20px; font-weight: 700; color: #111827; margin: 0 0 12px 0;">Ready to Send</h3>
+                            <p style="font-size: 15px; color: #6B7280; margin: 0 0 32px 0;">Click the button below to send authorization request to client's app</p>
+                            <button onclick="sendAuthRequest()" class="btn btn-primary btn-lg" style="padding: 14px 32px; font-size: 16px;">
+                                <i data-feather="send" style="width: 18px; height: 18px;"></i>
+                                Send Authorization Request
+                            </button>
+                        </div>
+
+                        <!-- Waiting State (hidden initially) -->
+                        <div id="waitingState" style="display: none; text-align: center; padding: 40px 20px;">
+                            <div style="width: 100px; height: 100px; background: #FEF3C7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; position: relative;">
+                                <i data-feather="clock" style="width: 50px; height: 50px; color: #F59E0B;"></i>
+                                <div style="position: absolute; top: -5px; right: -5px; width: 30px; height: 30px; background: #F59E0B; border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: pulse 2s infinite;">
+                                    <div style="width: 10px; height: 10px; background: white; border-radius: 50%;"></div>
+                                </div>
+                            </div>
+                            <h3 style="font-size: 20px; font-weight: 700; color: #111827; margin: 0 0 12px 0;">Waiting for Response</h3>
+                            <p style="font-size: 15px; color: #6B7280; margin: 0 0 24px 0;">Authorization request sent to client's mobile app</p>
+                            <div style="padding: 16px; background: #FFFBEB; border: 2px solid #FDE68A; border-radius: 12px; margin-bottom: 24px;">
+                                <div style="font-size: 14px; color: #92400E; line-height: 1.6;">
+                                    <strong>Waiting for client approval...</strong><br>
+                                    Please ask the client to check their dtcpay mobile app and approve the authorization request.
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 12px; justify-content: center;">
+                                <button onclick="simulateApproval()" class="btn btn-success" style="padding: 10px 24px;">
+                                    <i data-feather="check" style="width: 16px; height: 16px;"></i>
+                                    Simulate Approval
+                                </button>
+                                <button onclick="simulateRejection()" class="btn btn-secondary" style="padding: 10px 24px;">
+                                    <i data-feather="x" style="width: 16px; height: 16px;"></i>
+                                    Simulate Rejection
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Success State (hidden initially) -->
+                        <div id="successState" style="display: none; text-align: center; padding: 40px 20px;">
+                            <div style="width: 100px; height: 100px; background: #DCFCE7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+                                <i data-feather="check-circle" style="width: 50px; height: 50px; color: #10B981;"></i>
+                            </div>
+                            <h3 style="font-size: 20px; font-weight: 700; color: #10B981; margin: 0 0 12px 0;">Authorization Approved!</h3>
+                            <p style="font-size: 15px; color: #6B7280; margin: 0 0 32px 0;">Client has approved the authorization request</p>
+                            <button onclick="proceedToPortal()" class="btn btn-primary btn-lg" style="padding: 14px 32px; font-size: 16px;">
+                                Continue to Client Portal
+                                <i data-feather="arrow-right" style="width: 18px; height: 18px;"></i>
+                            </button>
+                        </div>
+
+                        <!-- Rejected State (hidden initially) -->
+                        <div id="rejectedState" style="display: none; text-align: center; padding: 40px 20px;">
+                            <div style="width: 100px; height: 100px; background: #FEE2E2; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+                                <i data-feather="x-circle" style="width: 50px; height: 50px; color: #EF4444;"></i>
+                            </div>
+                            <h3 style="font-size: 20px; font-weight: 700; color: #EF4444; margin: 0 0 12px 0;">Authorization Rejected</h3>
+                            <p style="font-size: 15px; color: #6B7280; margin: 0 0 32px 0;">Client has declined the authorization request</p>
+                            <div style="display: flex; gap: 12px; justify-content: center;">
+                                <button onclick="sendAuthRequest()" class="btn btn-primary" style="padding: 10px 24px;">
+                                    <i data-feather="refresh-cw" style="width: 16px; height: 16px;"></i>
+                                    Try Again
+                                </button>
+                                <button onclick="history.back()" class="btn btn-secondary" style="padding: 10px 24px;">
+                                    Choose Another Method
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+
+        document.getElementById('menuToggle')?.addEventListener('click', function() {
+            document.getElementById('sidebar')?.classList.toggle('active');
+        });
+
+        // Get client ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const clientId = urlParams.get('clientId') || '260115130049329';
+
+        function sendAuthRequest() {
+            // Hide initial state, show waiting state
+            document.getElementById('initialState').style.display = 'none';
+            document.getElementById('waitingState').style.display = 'block';
+            feather.replace();
+        }
+
+        function simulateApproval() {
+            // Hide waiting state, show success state
+            document.getElementById('waitingState').style.display = 'none';
+            document.getElementById('successState').style.display = 'block';
+            feather.replace();
+        }
+
+        function simulateRejection() {
+            // Hide waiting state, show rejected state
+            document.getElementById('waitingState').style.display = 'none';
+            document.getElementById('rejectedState').style.display = 'block';
+            feather.replace();
+        }
+
+        function proceedToPortal() {
+            window.location.href = 'client-portal.html?view=detail&clientId=' + clientId + '&authenticated=true';
+        }
+    </script>
+
+    <style>
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+    </style>
+</body>
+</html>

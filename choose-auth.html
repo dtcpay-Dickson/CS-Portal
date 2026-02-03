@@ -89,11 +89,13 @@
 
                         <!-- Section Header -->
                         <div style="text-align: center; margin-bottom: 40px;">
-                            <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 8px 20px rgba(102, 126, 234, 0.25);">
-                                <i data-feather="lock" style="width: 32px; height: 32px; color: white;"></i>
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 10px;">
+                                <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(102, 126, 234, 0.25);">
+                                    <i data-feather="lock" style="width: 28px; height: 28px; color: white;"></i>
+                                </div>
+                                <h2 style="font-size: 26px; font-weight: 700; color: #111827; margin: 0; letter-spacing: -0.5px;">Verify Client Identity</h2>
                             </div>
-                            <h2 style="font-size: 26px; font-weight: 700; color: #111827; margin-bottom: 10px; letter-spacing: -0.5px;">Verify Client Identity</h2>
-                            <p style="font-size: 15px; color: #6B7280; line-height: 1.6;">Select the best authentication method for this client</p>
+                            <p style="font-size: 15px; color: #6B7280; line-height: 1.6; margin: 0;">Select the best authentication method for this client</p>
                         </div>
 
                         <div class="auth-methods">
@@ -272,10 +274,14 @@
         const clientId = urlParams.get('clientId') || '260115130049329'; // Default ID if not provided
 
         function authenticateClient(method) {
-            // Simulate authentication
-            alert('Authentication method: ' + method + '\nRedirecting to client detail...');
-            // Redirect to client detail page with authenticated flag
-            window.location.href = 'client-portal.html?view=detail&clientId=' + clientId + '&authenticated=true';
+            // Redirect to specific authentication page
+            if (method === 'app') {
+                window.location.href = 'app-auth.html?clientId=' + clientId;
+            } else if (method === 'otp') {
+                window.location.href = 'otp-auth.html?clientId=' + clientId;
+            } else if (method === 'personal') {
+                window.location.href = 'personal-auth.html?clientId=' + clientId;
+            }
         }
 
         function showSkipConfirmation() {
