@@ -1,7 +1,25 @@
 // dtcpay CS Portal - JavaScript
 
+// Check authentication before anything else
+function checkAuthentication() {
+    const isAuthenticated = sessionStorage.getItem('authenticated');
+    const currentPage = window.location.pathname.split('/').pop();
+
+    // Allow login.html without authentication
+    if (currentPage === 'login.html') {
+        return;
+    }
+
+    // Redirect to login if not authenticated
+    if (!isAuthenticated || isAuthenticated !== 'true') {
+        window.location.href = 'login.html';
+        return;
+    }
+}
+
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
+    checkAuthentication();
     init();
 });
 
@@ -336,6 +354,52 @@ function applyCustomDateFilter() {
 
 // Export the function
 window.applyCustomDateFilter = applyCustomDateFilter;
+
+// User menu and logout functions
+function toggleUserMenu() {
+    const dropdown = document.getElementById('userDropdown');
+    if (dropdown) {
+        dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+
+        // Refresh icons
+        if (typeof feather !== 'undefined') {
+            setTimeout(() => feather.replace(), 100);
+        }
+    }
+}
+
+function logout() {
+    // Clear authentication
+    sessionStorage.removeItem('authenticated');
+    sessionStorage.removeItem('username');
+
+    // Redirect to login
+    window.location.href = 'login.html';
+}
+
+// Update user display name if logged in
+window.addEventListener('DOMContentLoaded', function() {
+    const username = sessionStorage.getItem('username');
+    if (username) {
+        const userNameElements = document.querySelectorAll('#currentUserName, #dropdownUserName');
+        userNameElements.forEach(el => {
+            if (el) el.textContent = username;
+        });
+    }
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+    const userMenu = document.querySelector('.user-menu');
+    const dropdown = document.getElementById('userDropdown');
+
+    if (dropdown && userMenu && !userMenu.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.style.display = 'none';
+    }
+});
+
+window.toggleUserMenu = toggleUserMenu;
+window.logout = logout;
 
 // Balance History Date Filter with 31-day max
 function applyBalanceDateFilter() {
