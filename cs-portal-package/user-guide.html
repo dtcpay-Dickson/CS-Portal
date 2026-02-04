@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Guide - dtcpay CS Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .guide-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .guide-hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            color: white;
+            margin-bottom: 48px;
+        }
+
+        .guide-hero-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .guide-hero-icon i {
+            width: 40px;
+            height: 40px;
+        }
+
+        .guide-hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .guide-hero p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+        .guide-nav {
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 32px;
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+        }
+
+        .guide-nav h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #6B7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .guide-nav-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            list-style: none;
+        }
+
+        .guide-nav-list li a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            color: #374151;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .guide-nav-list li a:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .guide-nav-list li a i {
+            width: 16px;
+            height: 16px;
+        }
+
+        .guide-section {
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 32px;
+            scroll-margin-top: 100px;
+        }
+
+        .guide-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .guide-section h2 i {
+            width: 32px;
+            height: 32px;
+            color: #667eea;
+        }
+
+        .guide-section h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #111827;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .guide-section h3 i {
+            width: 24px;
+            height: 24px;
+            color: #667eea;
+        }
+
+        .guide-section h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #374151;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .guide-section p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #4B5563;
+            margin-bottom: 16px;
+        }
+
+        .guide-section ul, .guide-section ol {
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        .guide-section li {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #4B5563;
+            margin-bottom: 8px;
+        }
+
+        .guide-section strong {
+            color: #111827;
+            font-weight: 600;
+        }
+
+        .screenshot-placeholder {
+            background: #F9FAFB;
+            border: 2px dashed #D1D5DB;
+            border-radius: 12px;
+            padding: 80px 40px;
+            text-align: center;
+            margin: 24px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .screenshot-placeholder i {
+            width: 48px;
+            height: 48px;
+            color: #9CA3AF;
+        }
+
+        .screenshot-placeholder p {
+            font-size: 14px;
+            color: #6B7280;
+            margin: 0;
+        }
+
+        .screenshot {
+            border-radius: 12px;
+            border: 2px solid #E5E7EB;
+            margin: 24px 0;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-box {
+            background: rgba(59, 130, 246, 0.05);
+            border-left: 4px solid #3B82F6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .info-box-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: #1E40AF;
+            margin-bottom: 8px;
+        }
+
+        .info-box-title i {
+            width: 20px;
+            height: 20px;
+        }
+
+        .info-box p {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .warning-box {
+            background: rgba(239, 68, 68, 0.05);
+            border-left: 4px solid #EF4444;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .warning-box-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: #991B1B;
+            margin-bottom: 8px;
+        }
+
+        .warning-box-title i {
+            width: 20px;
+            height: 20px;
+        }
+
+        .warning-box p {
+            margin: 0;
+            font-size: 15px;
+            color: #991B1B;
+        }
+
+        .success-box {
+            background: rgba(16, 185, 129, 0.05);
+            border-left: 4px solid #10B981;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .success-box-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: #065F46;
+            margin-bottom: 8px;
+        }
+
+        .success-box-title i {
+            width: 20px;
+            height: 20px;
+        }
+
+        .success-box p {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 24px;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .method-card {
+            background: #F9FAFB;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+        }
+
+        .method-card h4 {
+            margin-top: 0;
+            color: #667eea;
+        }
+
+        .quick-ref-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border: 2px solid #667eea;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .quick-ref-box code {
+            display: block;
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            color: #374151;
+            margin: 12px 0;
+        }
+
+        @media (max-width: 768px) {
+            .guide-hero {
+                padding: 40px 20px;
+            }
+
+            .guide-hero h1 {
+                font-size: 32px;
+            }
+
+            .guide-section {
+                padding: 24px 20px;
+            }
+
+            .guide-section h2 {
+                font-size: 24px;
+            }
+
+            .guide-section h3 {
+                font-size: 20px;
+            }
+
+            .guide-nav {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo" style="flex-direction: column; align-items: center;">
+                <img src="https://dtcpay.com/wp-content/themes/dtc/frontend/resources/img/dtc-logo.svg" alt="dtcpay" style="height: 40px; width: auto; margin-bottom: 8px;" onerror="this.style.display='none'">
+                <div style="display: flex; flex-direction: column; gap: 2px; align-items: center; text-align: center;">
+                    <span style="font-size: 16px; font-weight: 700; color: var(--white); letter-spacing: 0.5px;">TOP 2.0</span>
+                    <span style="font-size: 13px; font-weight: 500; color: var(--sidebar-text);">CS Portal</span>
+                </div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">FIND CLIENT</div>
+                <a href="index.html" class="nav-item">
+                    <i data-feather="search"></i>
+                    <span>Find Client</span>
+                </a>
+            </div>
+
+            <div class="nav-section" style="margin-top: 16px;">
+                <div class="nav-section-title">HELP & SUPPORT</div>
+                <a href="user-guide.html" class="nav-item active">
+                    <i data-feather="book-open"></i>
+                    <span>User Guide</span>
+                </a>
+            </div>
+
+            <div class="nav-section" style="margin-top: 16px;">
+                <div class="nav-section-title">QUICK ACTIONS</div>
+                <a href="#" class="nav-item" onclick="alert('Coming soon!'); return false;">
+                    <i data-feather="clock"></i>
+                    <span>Recent Searches</span>
+                </a>
+                <a href="#" class="nav-item" onclick="alert('Coming soon!'); return false;">
+                    <i data-feather="activity"></i>
+                    <span>Active Sessions</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="user-avatar-small">CS</div>
+                <div class="user-info">
+                    <div class="user-name-small">CS Agent</div>
+                    <div class="user-role">Customer Support</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Top Navigation Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i data-feather="menu"></i>
+                </button>
+                <h1 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0;">User Guide</h1>
+            </div>
+            <div class="topbar-right">
+                <button class="icon-btn" onclick="window.print()">
+                    <i data-feather="printer"></i>
+                </button>
+                <div class="user-menu" onclick="toggleUserMenu()">
+                    <div class="user-avatar">CS</div>
+                    <span class="user-name" id="currentUserName">CS Agent</span>
+                    <i data-feather="chevron-down"></i>
+                </div>
+                <div class="user-dropdown" id="userDropdown" style="display: none; position: absolute; top: 60px; right: 20px; background: white; border: 1px solid #E5E7EB; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 200px; z-index: 1000;">
+                    <div style="padding: 12px 16px; border-bottom: 1px solid #E5E7EB;">
+                        <div style="font-weight: 600; color: #111827; font-size: 14px;" id="dropdownUserName">CS Agent</div>
+                        <div style="font-size: 12px; color: #6B7280;">Customer Support</div>
+                    </div>
+                    <div style="padding: 8px 0;">
+                        <a href="login.html" onclick="logout(); return false;" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; color: #EF4444; text-decoration: none; font-size: 14px; transition: all 0.2s;">
+                            <i data-feather="log-out" style="width: 18px; height: 18px;"></i>
+                            <span>Sign Out</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <div class="guide-container">
+                <!-- Hero Section -->
+                <div class="guide-hero">
+                    <div class="guide-hero-icon">
+                        <i data-feather="book-open"></i>
+                    </div>
+                    <h1>CS Portal User Guide</h1>
+                    <p>Complete documentation for login, client search, and authentication</p>
+                </div>
+
+                <!-- Quick Navigation -->
+                <div class="guide-nav">
+                    <h3>Quick Navigation</h3>
+                    <ul class="guide-nav-list">
+                        <li><a href="#login"><i data-feather="log-in"></i> Login</a></li>
+                        <li><a href="#finding-clients"><i data-feather="search"></i> Finding Clients</a></li>
+                        <li><a href="#authentication"><i data-feather="shield"></i> Authentication</a></li>
+                        <li><a href="#best-practices"><i data-feather="check-circle"></i> Best Practices</a></li>
+                    </ul>
+                </div>
+
+                <!-- Section 1: Logging In -->
+                <section class="guide-section" id="login">
+                    <h2><i data-feather="log-in"></i> Logging In</h2>
+                    <p>The CS Portal requires authentication to ensure only authorized agents can access client information and perform support actions.</p>
+
+                    <div class="screenshot-placeholder">
+                        <i data-feather="image"></i>
+                        <p><strong>Login Page Screenshot</strong></p>
+                        <p>The login page features secure authentication with username/email and password fields</p>
+                    </div>
+
+                    <h3><i data-feather="arrow-right"></i> How to Login</h3>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Open the Portal</strong><br>
+                            Navigate to the CS Portal URL in your browser. You'll automatically be redirected to the login page if not already authenticated.
+                        </li>
+                        <li>
+                            <strong>Enter Your Credentials</strong><br>
+                            Enter your assigned username or email address and password in the respective fields.
+                        </li>
+                        <li>
+                            <strong>Optional: Remember Me</strong><br>
+                            Check the "Remember me" option to have your username pre-filled on future visits (password is never saved).
+                        </li>
+                        <li>
+                            <strong>Sign In</strong><br>
+                            Click the "Sign In" button or press Enter to authenticate and access the portal.
+                        </li>
+                    </ol>
+
+                    <div class="info-box">
+                        <div class="info-box-title">
+                            <i data-feather="info"></i>
+                            Security Features
+                        </div>
+                        <p>All login credentials are encrypted during transmission. Sessions automatically expire after inactivity for your protection.</p>
+                    </div>
+
+                    <h3><i data-feather="help-circle"></i> Forgot Password?</h3>
+                    <p>If you've forgotten your password, click the "Forgot password?" link and contact your system administrator for assistance with password reset.</p>
+
+                    <h3><i data-feather="log-out"></i> Signing Out</h3>
+                    <p>To log out securely:</p>
+                    <ol>
+                        <li>Click your user avatar in the top-right corner</li>
+                        <li>Select "Sign Out" from the dropdown menu</li>
+                        <li>You'll be redirected to the login page</li>
+                    </ol>
+
+                    <div class="warning-box">
+                        <div class="warning-box-title">
+                            <i data-feather="alert-triangle"></i>
+                            Important Security Reminder
+                        </div>
+                        <p>Always sign out when leaving your workstation to protect client data and maintain security compliance.</p>
+                    </div>
+                </section>
+
+                <!-- Section 2: Finding Clients -->
+                <section class="guide-section" id="finding-clients">
+                    <h2><i data-feather="search"></i> Finding Clients</h2>
+                    <p>The CS Portal offers multiple search methods to quickly locate client information. Choose the method based on the information available.</p>
+
+                    <div class="screenshot-placeholder">
+                        <i data-feather="image"></i>
+                        <p><strong>Find Client Page Screenshot</strong></p>
+                        <p>Main dashboard showing all available search methods</p>
+                    </div>
+
+                    <h3><i data-feather="smartphone"></i> Primary Method: Mobile Number (Recommended)</h3>
+                    <div class="method-card">
+                        <h4>Why it's recommended:</h4>
+                        <ul>
+                            <li><strong>Fastest:</strong> Returns results in under 1 second</li>
+                            <li><strong>Most Accurate:</strong> Mobile numbers are unique identifiers</li>
+                            <li><strong>Primary ID:</strong> Main registration method in the system</li>
+                        </ul>
+
+                        <h4>How to use:</h4>
+                        <ol>
+                            <li>Click the "Mobile Number" card on the Find Client page</li>
+                            <li>Enter the client's registered mobile number (include country code if required)</li>
+                            <li>Click "Search" or press Enter</li>
+                            <li>View the client profile or select from results</li>
+                        </ol>
+                    </div>
+
+                    <h3><i data-feather="grid"></i> Alternative Search Methods</h3>
+
+                    <h4>1. Client Name</h4>
+                    <p>Search using full or partial names when mobile number is unavailable.</p>
+                    <ul>
+                        <li>Enter first name, last name, or both</li>
+                        <li>Partial matches will show multiple results</li>
+                        <li>Results sorted by relevance</li>
+                        <li>Use full names for more accurate results</li>
+                    </ul>
+
+                    <div class="screenshot-placeholder">
+                        <i data-feather="image"></i>
+                        <p><strong>Client Name Search Screenshot</strong></p>
+                        <p>Name search interface with results list</p>
+                    </div>
+
+                    <h4>2. Client ID</h4>
+                    <p>Most precise method when you have the exact identifier.</p>
+                    <ul>
+                        <li>Enter the complete Client ID number</li>
+                        <li>Returns exact match only</li>
+                        <li>Ideal when client provides their ID</li>
+                        <li>No ambiguity in results</li>
+                    </ul>
+
+                    <h4>3. Email Address</h4>
+                    <p>Search using registered email address.</p>
+                    <ul>
+                        <li>Must match exactly as registered</li>
+                        <li>Case-insensitive search</li>
+                        <li>Good for web-based inquiries</li>
+                    </ul>
+
+                    <h4>4. Salesforce Case</h4>
+                    <p>Import information from existing cases.</p>
+                    <ul>
+                        <li>Enter Salesforce Case Number</li>
+                        <li>Auto-populates client information</li>
+                        <li>Links interaction to existing case</li>
+                        <li>Saves time on repeat contacts</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <div class="info-box-title">
+                            <i data-feather="zap"></i>
+                            Pro Tip
+                        </div>
+                        <p>Start with mobile number search whenever possible. If that fails, try Client ID, then name search as a last resort for broader results.</p>
+                    </div>
+
+                    <h3><i data-feather="list"></i> Understanding Search Results</h3>
+                    <p>After searching, results can be displayed in two views:</p>
+                    <ul>
+                        <li><strong>List View:</strong> Detailed table format with key information</li>
+                        <li><strong>Grid View:</strong> Card-based layout for easier scanning</li>
+                    </ul>
+                    <p>Click any result to view the complete client profile and proceed to authentication.</p>
+                </section>
+
+                <!-- Section 3: Client Authentication -->
+                <section class="guide-section" id="authentication">
+                    <h2><i data-feather="shield"></i> Client Authentication</h2>
+                    <p>Client authentication is <strong>mandatory</strong> before accessing sensitive information. This ensures data protection compliance and prevents unauthorized access.</p>
+
+                    <div class="warning-box">
+                        <div class="warning-box-title">
+                            <i data-feather="shield-off"></i>
+                            Why Authentication Matters
+                        </div>
+                        <p>Authentication protects both clients and the company by verifying identity before discussing account details, ensuring compliance with data protection regulations, and preventing fraud.</p>
+                    </div>
+
+                    <div class="screenshot-placeholder">
+                        <i data-feather="image"></i>
+                        <p><strong>Choose Authentication Method Screenshot</strong></p>
+                        <p>Authentication method selection screen</p>
+                    </div>
+
+                    <h3><i data-feather="smartphone"></i> Method 1: Mobile App Authentication (Recommended)</h3>
+                    <div class="method-card">
+                        <h4>Best for: Quick and secure verification</h4>
+
+                        <p><strong>How it works:</strong></p>
+                        <ol class="step-list">
+                            <li>Select "Mobile App Authentication"</li>
+                            <li>System sends push notification to client's registered mobile app</li>
+                            <li>Client taps "Approve" in their app</li>
+                            <li>Instant verification (10-30 seconds typical)</li>
+                        </ol>
+
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>✅ Instant verification</li>
+                            <li>✅ No sensitive information sharing needed</li>
+                            <li>✅ Most secure method</li>
+                            <li>✅ Best client experience</li>
+                        </ul>
+                    </div>
+
+                    <h3><i data-feather="message-square"></i> Method 2: OTP Verification</h3>
+                    <div class="method-card">
+                        <h4>Best for: Clients without app access or experiencing app issues</h4>
+
+                        <p><strong>How it works:</strong></p>
+                        <ol class="step-list">
+                            <li>Select "OTP Verification"</li>
+                            <li>System sends 6-digit code via SMS to registered mobile</li>
+                            <li>Ask client to read the code</li>
+                            <li>Enter code in verification field</li>
+                            <li>Click "Verify" to authenticate</li>
+                        </ol>
+
+                        <p><strong>Features:</strong></p>
+                        <ul>
+                            <li>⚡ Fast verification (1-2 minutes)</li>
+                            <li>📱 Works via standard SMS</li>
+                            <li>🔑 Code expires after 5 minutes</li>
+                            <li>🔄 Can request new code if needed</li>
+                        </ul>
+                    </div>
+
+                    <div class="screenshot-placeholder">
+                        <i data-feather="image"></i>
+                        <p><strong>OTP Verification Screenshot</strong></p>
+                        <p>OTP input screen with verification field</p>
+                    </div>
+
+                    <h3><i data-feather="help-circle"></i> Method 3: Personal Questions</h3>
+                    <div class="method-card">
+                        <h4>Best for: When digital methods aren't available</h4>
+
+                        <p><strong>How it works:</strong></p>
+                        <ol class="step-list">
+                            <li>Select "Personal Questions"</li>
+                            <li>System displays security questions from profile</li>
+                            <li>Ask client each question verbally</li>
+                            <li>Mark answers as correct/incorrect</li>
+                            <li>Minimum 3 correct answers required</li>
+                        </ol>
+
+                        <p><strong>Question types include:</strong></p>
+                        <ul>
+                            <li>Date of birth</li>
+                            <li>Last transaction amount and date</li>
+                            <li>Account opening date</li>
+                            <li>Registered address details</li>
+                            <li>Recent activity verification</li>
+                        </ul>
+                    </div>
+
+                    <h3><i data-feather="check-circle"></i> After Successful Authentication</h3>
+                    <div class="success-box">
+                        <div class="success-box-title">
+                            <i data-feather="check-circle"></i>
+                            Authentication Successful
+                        </div>
+                        <p>Once authenticated, the client's full profile becomes accessible, sensitive information is revealed, and all actions are logged with timestamps for security.</p>
+                    </div>
+
+                    <h3><i data-feather="x-circle"></i> Authentication Failures</h3>
+                    <p>If authentication fails:</p>
+                    <ul>
+                        <li>System limits the number of attempts (typically 3)</li>
+                        <li>Try an alternative authentication method</li>
+                        <li>Verify you're speaking with the correct person</li>
+                        <li>Escalate to supervisor if repeated failures occur</li>
+                        <li>All failed attempts are logged for security review</li>
+                    </ul>
+
+                    <h3><i data-feather="skip-forward"></i> Skip Authentication (Use With Extreme Caution)</h3>
+                    <div class="warning-box">
+                        <div class="warning-box-title">
+                            <i data-feather="alert-triangle"></i>
+                            Warning: Skip Authentication
+                        </div>
+                        <p>Skipping authentication should ONLY be used for public information inquiries, account opening assistance, or general product questions. This action is logged and audited.</p>
+                    </div>
+
+                    <p><strong>When skipping is acceptable:</strong></p>
+                    <ul>
+                        <li>Public information requests only</li>
+                        <li>New account opening guidance</li>
+                        <li>General product/service questions</li>
+                        <li>Technical support for app installation</li>
+                    </ul>
+
+                    <p><strong>Restrictions when authentication is skipped:</strong></p>
+                    <ul>
+                        <li>❌ No access to account balances</li>
+                        <li>❌ No transaction history</li>
+                        <li>❌ Cannot make account changes</li>
+                        <li>❌ Cannot discuss personal details</li>
+                        <li>⚠️ All actions flagged for manager review</li>
+                    </ul>
+                </section>
+
+                <!-- Section 4: Best Practices -->
+                <section class="guide-section" id="best-practices">
+                    <h2><i data-feather="check-circle"></i> Best Practices & Tips</h2>
+
+                    <h3><i data-feather="shield"></i> Security Best Practices</h3>
+                    <ul>
+                        <li><strong>Always authenticate when possible</strong> - Don't skip unless absolutely necessary</li>
+                        <li><strong>Use app authentication first</strong> - It's fastest and most secure</li>
+                        <li><strong>Never share login credentials</strong> - Each agent has unique access</li>
+                        <li><strong>Lock your workstation</strong> - When stepping away, even briefly</li>
+                        <li><strong>Sign out properly</strong> - Use the logout button, don't just close the browser</li>
+                        <li><strong>Report suspicious activity</strong> - Immediately alert your supervisor</li>
+                    </ul>
+
+                    <h3><i data-feather="users"></i> Client Communication</h3>
+                    <ul>
+                        <li><strong>Explain the process</strong> - Tell clients why authentication is needed</li>
+                        <li><strong>Guide them patiently</strong> - Not everyone is tech-savvy</li>
+                        <li><strong>Offer alternatives</strong> - If one method fails, suggest another</li>
+                        <li><strong>Stay professional</strong> - Even if authentication takes multiple attempts</li>
+                        <li><strong>Confirm understanding</strong> - Make sure clients know what to expect</li>
+                    </ul>
+
+                    <h3><i data-feather="trending-up"></i> Efficiency Tips</h3>
+                    <ul>
+                        <li><strong>Start with mobile search</strong> - It's the fastest method</li>
+                        <li><strong>Keep case notes</strong> - Document your interactions thoroughly</li>
+                        <li><strong>Use keyboard shortcuts</strong> - Navigate faster with Enter key</li>
+                        <li><strong>Bookmark frequently used features</strong> - Save time on common tasks</li>
+                        <li><strong>Learn all search methods</strong> - Be prepared for any situation</li>
+                    </ul>
+
+                    <h3><i data-feather="alert-circle"></i> What to Do When...</h3>
+
+                    <h4>Client doesn't have their phone:</h4>
+                    <ul>
+                        <li>Try personal questions authentication</li>
+                        <li>Ask for alternative verification information</li>
+                        <li>Verify callback number and schedule follow-up</li>
+                    </ul>
+
+                    <h4>App authentication times out:</h4>
+                    <ul>
+                        <li>Verify client has app installed and updated</li>
+                        <li>Check if notifications are enabled</li>
+                        <li>Switch to OTP method as backup</li>
+                    </ul>
+
+                    <h4>Multiple failed authentication attempts:</h4>
+                    <ul>
+                        <li>Escalate to supervisor immediately</li>
+                        <li>Document all attempts and responses</li>
+                        <li>Consider potential security risk</li>
+                        <li>Do not proceed without proper authentication</li>
+                    </ul>
+
+                    <div class="quick-ref-box">
+                        <h3>Quick Reference</h3>
+                        <p><strong>Login Process:</strong></p>
+                        <code>Navigate to portal → Enter credentials → Click Sign In → Access dashboard</code>
+
+                        <p><strong>Finding a Client:</strong></p>
+                        <code>Choose search method → Enter criteria → View results → Select client</code>
+
+                        <p><strong>Authentication Flow:</strong></p>
+                        <code>Choose method → Send verification → Receive confirmation → Access client data</code>
+                    </div>
+                </section>
+
+                <!-- Support Section -->
+                <section class="guide-section">
+                    <h2><i data-feather="help-circle"></i> Need Help?</h2>
+                    <p>If you encounter issues or have questions:</p>
+                    <ul>
+                        <li><strong>Technical Issues:</strong> Contact IT Support</li>
+                        <li><strong>Process Questions:</strong> Refer to your team lead</li>
+                        <li><strong>System Bugs:</strong> Report to System Administrator</li>
+                        <li><strong>Password Reset:</strong> Contact IT Security</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <div class="info-box-title">
+                            <i data-feather="book"></i>
+                            Document Information
+                        </div>
+                        <p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> 2025 | <strong>For:</strong> dtcpay CS Portal (TOP 2.0)</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+
+        // Menu toggle for mobile
+        document.getElementById('menuToggle')?.addEventListener('click', function() {
+            document.getElementById('sidebar')?.classList.toggle('active');
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

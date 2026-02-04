@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS / Email OTP - dtcpay CS Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo" style="flex-direction: column; align-items: center;">
+                <img src="https://dtcpay.com/wp-content/themes/dtc/frontend/resources/img/dtc-logo.svg" alt="dtcpay" style="height: 40px; width: auto; margin-bottom: 8px;" onerror="this.style.display='none'">
+                <div style="display: flex; flex-direction: column; gap: 2px; align-items: center; text-align: center;">
+                    <span style="font-size: 16px; font-weight: 700; color: var(--white); letter-spacing: 0.5px;">TOP 2.0</span>
+                    <span style="font-size: 13px; font-weight: 500; color: var(--sidebar-text);">CS Portal</span>
+                </div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">AUTHENTICATION</div>
+                <a href="index.html" class="nav-item">
+                    <i data-feather="search"></i>
+                    <span>Find Client</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <i data-feather="message-square"></i>
+                    <span>OTP Verification</span>
+                </a>
+            </div>
+            <div class="nav-section" style="margin-top: 16px;">
+                <div class="nav-section-title">HELP & SUPPORT</div>
+                <a href="user-guide.html" class="nav-item">
+                    <i data-feather="book-open"></i>
+                    <span>User Guide</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="user-avatar-small">CS</div>
+                <div class="user-info">
+                    <div class="user-name-small">CS Agent</div>
+                    <div class="user-role">Customer Support</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Top Navigation Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i data-feather="menu"></i>
+                </button>
+                <button class="btn btn-sm btn-secondary" onclick="history.back()" style="margin-right: 16px;">
+                    <i data-feather="arrow-left" style="width: 14px; height: 14px;"></i>
+                    Back
+                </button>
+                <h1 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0;">SMS / Email OTP</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="user-menu">
+                    <div class="user-avatar">CS</div>
+                    <span class="user-name">CS Agent</span>
+                    <i data-feather="chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content" style="background: #F9FAFB; min-height: 100vh;">
+            <div style="max-width: 800px; margin: 0 auto; padding: 40px 20px;">
+                <!-- Client Banner -->
+                <div style="margin-bottom: 32px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 24px; border-radius: 16px; color: white; box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div style="width: 60px; height: 60px; background: rgba(255, 255, 255, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 22px; backdrop-filter: blur(10px); border: 3px solid rgba(255, 255, 255, 0.3);">JD</div>
+                        <div style="flex: 1;">
+                            <div style="font-weight: 700; font-size: 20px; margin-bottom: 6px; letter-spacing: -0.5px;">John Doe</div>
+                            <div style="font-size: 13px; opacity: 0.95; font-weight: 500;">ID: 260115130049329</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OTP Card -->
+                <div style="background: white; border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
+                    <div style="text-align: center; margin-bottom: 32px;">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px;">
+                            <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(102, 126, 234, 0.25);">
+                                <i data-feather="message-square" style="width: 28px; height: 28px; color: white;"></i>
+                            </div>
+                            <h2 style="font-size: 24px; font-weight: 700; color: #111827; margin: 0; letter-spacing: -0.5px;">SMS / Email OTP</h2>
+                        </div>
+                        <p style="font-size: 15px; color: #6B7280; line-height: 1.5; margin: 0;">Send one-time password to client's registered contact</p>
+                    </div>
+
+                    <!-- Send OTP Section -->
+                    <div style="margin-bottom: 32px;">
+                        <h3 style="font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 16px;">Select Delivery Method</h3>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                            <!-- SMS Option -->
+                            <div style="border: 2px solid #E5E7EB; border-radius: 12px; padding: 20px; background: white;">
+                                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                                    <div style="width: 40px; height: 40px; background: #DBEAFE; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                                        <i data-feather="smartphone" style="width: 20px; height: 20px; color: #3B82F6;"></i>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: 700; font-size: 15px; color: #111827; margin-bottom: 2px;">SMS</div>
+                                        <div style="font-size: 13px; color: #6B7280; font-family: monospace;">+65 9*** ****</div>
+                                    </div>
+                                </div>
+                                <button id="smsBtn" onclick="sendOTP('sms')" class="btn btn-primary" style="width: 100%; padding: 10px;">
+                                    <i data-feather="send" style="width: 16px; height: 16px;"></i>
+                                    Send SMS OTP
+                                </button>
+                            </div>
+
+                            <!-- Email Option -->
+                            <div style="border: 2px solid #E5E7EB; border-radius: 12px; padding: 20px; background: white;">
+                                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                                    <div style="width: 40px; height: 40px; background: #FEF3C7; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                                        <i data-feather="mail" style="width: 20px; height: 20px; color: #F59E0B;"></i>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: 700; font-size: 15px; color: #111827; margin-bottom: 2px;">Email</div>
+                                        <div style="font-size: 13px; color: #6B7280;">j***@gmail.com</div>
+                                    </div>
+                                </div>
+                                <button id="emailBtn" onclick="sendOTP('email')" class="btn btn-primary" style="width: 100%; padding: 10px;">
+                                    <i data-feather="send" style="width: 16px; height: 16px;"></i>
+                                    Send Email OTP
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- OTP Sent Message (hidden initially) -->
+                        <div id="otpSentMessage" style="display: none; padding: 16px; background: #ECFDF5; border: 2px solid #A7F3D0; border-radius: 12px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <i data-feather="check-circle" style="width: 20px; height: 20px; color: #10B981; flex-shrink: 0;"></i>
+                                <div style="font-size: 14px; color: #065F46; line-height: 1.5;">
+                                    <strong id="sentMethod">OTP sent via SMS!</strong><br>
+                                    6-digit code has been sent to the client. Code expires in 5 minutes.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Enter OTP Section -->
+                    <div id="otpInputSection" style="display: none;">
+                        <div style="border-top: 2px solid #E5E7EB; padding-top: 32px;">
+                            <h3 style="font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 16px;">Enter OTP Code</h3>
+                            <p style="font-size: 14px; color: #6B7280; margin-bottom: 20px;">Ask the client to provide the 6-digit code they received</p>
+
+                            <div style="display: flex; gap: 12px; margin-bottom: 20px;">
+                                <input type="text" id="otpInput" maxlength="6" placeholder="000000" style="flex: 1; height: 56px; font-size: 24px; letter-spacing: 8px; text-align: center; font-weight: 700; border: 2px solid #E5E7EB; border-radius: 12px; padding: 0 20px;" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                <button onclick="validateOTP()" class="btn btn-primary" style="padding: 0 32px; height: 56px;">
+                                    <i data-feather="check" style="width: 20px; height: 20px;"></i>
+                                    Verify
+                                </button>
+                            </div>
+
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <div style="font-size: 13px; color: #6B7280;">
+                                    Didn't receive code?
+                                </div>
+                                <button onclick="resendOTP()" class="btn btn-sm btn-secondary">
+                                    <i data-feather="refresh-cw" style="width: 14px; height: 14px;"></i>
+                                    Resend
+                                </button>
+                            </div>
+
+                            <!-- Error Message (hidden initially) -->
+                            <div id="errorMessage" style="display: none; margin-top: 16px; padding: 12px; background: #FEE2E2; border: 2px solid #FECACA; border-radius: 8px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <i data-feather="x-circle" style="width: 16px; height: 16px; color: #EF4444; flex-shrink: 0;"></i>
+                                    <span style="font-size: 13px; color: #991B1B; font-weight: 600;">Invalid OTP code. Please try again.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+
+        document.getElementById('menuToggle')?.addEventListener('click', function() {
+            document.getElementById('sidebar')?.classList.toggle('active');
+        });
+
+        // Get client ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const clientId = urlParams.get('clientId') || '260115130049329';
+
+        let currentMethod = '';
+
+        function sendOTP(method) {
+            currentMethod = method;
+
+            // Disable buttons and show loading
+            document.getElementById('smsBtn').disabled = true;
+            document.getElementById('emailBtn').disabled = true;
+            document.getElementById('smsBtn').innerHTML = '<i data-feather="loader" style="width: 16px; height: 16px; animation: spin 1s linear infinite;"></i> Sending...';
+            document.getElementById('emailBtn').innerHTML = '<i data-feather="loader" style="width: 16px; height: 16px; animation: spin 1s linear infinite;"></i> Sending...';
+
+            setTimeout(() => {
+                // Show success message
+                const message = method === 'sms' ? 'OTP sent via SMS!' : 'OTP sent via Email!';
+                document.getElementById('sentMethod').textContent = message;
+                document.getElementById('otpSentMessage').style.display = 'block';
+
+                // Show OTP input section
+                document.getElementById('otpInputSection').style.display = 'block';
+
+                // Reset buttons
+                document.getElementById('smsBtn').disabled = false;
+                document.getElementById('emailBtn').disabled = false;
+                document.getElementById('smsBtn').innerHTML = '<i data-feather="send" style="width: 16px; height: 16px;"></i> Send SMS OTP';
+                document.getElementById('emailBtn').innerHTML = '<i data-feather="send" style="width: 16px; height: 16px;"></i> Send Email OTP';
+
+                feather.replace();
+            }, 1000);
+        }
+
+        function validateOTP() {
+            const otpValue = document.getElementById('otpInput').value;
+
+            if (otpValue.length !== 6) {
+                document.getElementById('errorMessage').style.display = 'block';
+                feather.replace();
+                return;
+            }
+
+            // For demo: accept "123456" as valid OTP
+            if (otpValue === '123456') {
+                // Success - redirect to client portal
+                window.location.href = 'client-portal.html?view=detail&clientId=' + clientId + '&authenticated=true';
+            } else {
+                // Show error
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('otpInput').value = '';
+                feather.replace();
+            }
+        }
+
+        function resendOTP() {
+            if (currentMethod) {
+                sendOTP(currentMethod);
+            }
+        }
+
+        // Enter key to validate
+        document.getElementById('otpInput')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                validateOTP();
+            }
+        });
+    </script>
+
+    <style>
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</body>
+</html>

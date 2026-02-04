@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Authentication Method - dtcpay CS Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo" style="flex-direction: column; align-items: center;">
+                <img src="https://dtcpay.com/wp-content/themes/dtc/frontend/resources/img/dtc-logo.svg" alt="dtcpay" style="height: 40px; width: auto; margin-bottom: 8px;" onerror="this.style.display='none'">
+                <div style="display: flex; flex-direction: column; gap: 2px; align-items: center; text-align: center;">
+                    <span style="font-size: 16px; font-weight: 700; color: var(--white); letter-spacing: 0.5px;">TOP 2.0</span>
+                    <span style="font-size: 13px; font-weight: 500; color: var(--sidebar-text);">CS Portal</span>
+                </div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">AUTHENTICATION</div>
+                <a href="index.html" class="nav-item">
+                    <i data-feather="search"></i>
+                    <span>Find Client</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <i data-feather="shield"></i>
+                    <span>Authenticate</span>
+                </a>
+            </div>
+            <div class="nav-section" style="margin-top: 16px;">
+                <div class="nav-section-title">HELP & SUPPORT</div>
+                <a href="user-guide.html" class="nav-item">
+                    <i data-feather="book-open"></i>
+                    <span>User Guide</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="user-avatar-small">CS</div>
+                <div class="user-info">
+                    <div class="user-name-small">CS Agent</div>
+                    <div class="user-role">Customer Support</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Top Navigation Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i data-feather="menu"></i>
+                </button>
+                <button class="btn btn-sm btn-secondary" onclick="history.back()" style="margin-right: 16px;">
+                    <i data-feather="arrow-left" style="width: 14px; height: 14px;"></i>
+                    Back
+                </button>
+                <h1 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0;">Choose Authentication Method</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="user-menu">
+                    <div class="user-avatar">CS</div>
+                    <span class="user-name">CS Agent</span>
+                    <i data-feather="chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <div style="max-width: 1200px;">
+                <div class="card">
+                    <div class="card-body" style="padding: 40px;">
+                        <!-- Client Banner -->
+                        <div style="margin-bottom: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 28px; border-radius: 16px; color: white; box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);">
+                            <div style="display: flex; align-items: center; gap: 20px;">
+                                <div style="width: 72px; height: 72px; background: rgba(255, 255, 255, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 26px; backdrop-filter: blur(10px); border: 3px solid rgba(255, 255, 255, 0.3);">JD</div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 700; font-size: 22px; margin-bottom: 8px; letter-spacing: -0.5px;">John Doe</div>
+                                    <div style="font-size: 14px; opacity: 0.95; font-weight: 500;">ID: 260115130049329 • Phone: +65 9*** **** • Email: j***@gmail.com</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section Header -->
+                        <div style="text-align: center; margin-bottom: 40px;">
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 10px;">
+                                <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(102, 126, 234, 0.25);">
+                                    <i data-feather="lock" style="width: 28px; height: 28px; color: white;"></i>
+                                </div>
+                                <h2 style="font-size: 26px; font-weight: 700; color: #111827; margin: 0; letter-spacing: -0.5px;">Verify Client Identity</h2>
+                            </div>
+                            <p style="font-size: 15px; color: #6B7280; line-height: 1.6; margin: 0;">Select the best authentication method for this client</p>
+                        </div>
+
+                        <div class="auth-methods">
+                            <!-- App Authorization -->
+                            <div class="auth-method recommended" onclick="authenticateClient('app')" style="cursor: pointer;">
+                                <div class="auth-method-icon">
+                                    <i data-feather="smartphone"></i>
+                                </div>
+                                <div class="auth-method-content">
+                                    <div class="auth-method-header">
+                                        <div class="auth-method-title">App Authorization</div>
+                                        <span class="auth-method-badge">Fastest</span>
+                                    </div>
+                                    <div class="auth-method-description">Client authorizes access directly from their mobile app with biometric or PIN verification</div>
+                                    <div class="auth-method-features">
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>Most Secure</span>
+                                        </div>
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>No codes needed</span>
+                                        </div>
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>~10 seconds</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="select-auth-btn">
+                                    <span>Select</span>
+                                    <i data-feather="chevron-right"></i>
+                                </button>
+                            </div>
+
+                            <!-- OTP -->
+                            <div class="auth-method" onclick="authenticateClient('otp')" style="cursor: pointer;">
+                                <div class="auth-method-icon">
+                                    <i data-feather="message-square"></i>
+                                </div>
+                                <div class="auth-method-content">
+                                    <div class="auth-method-header">
+                                        <div class="auth-method-title">SMS / Email OTP</div>
+                                    </div>
+                                    <div class="auth-method-description">Send a one-time password to client's registered mobile number or email address</div>
+                                    <div class="auth-method-features">
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>Widely accessible</span>
+                                        </div>
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>6-digit code</span>
+                                        </div>
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>~30 seconds</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="select-auth-btn">
+                                    <span>Select</span>
+                                    <i data-feather="chevron-right"></i>
+                                </button>
+                            </div>
+
+                            <!-- Personal Verification -->
+                            <div class="auth-method" onclick="authenticateClient('personal')" style="cursor: pointer;">
+                                <div class="auth-method-icon">
+                                    <i data-feather="user-check"></i>
+                                </div>
+                                <div class="auth-method-content">
+                                    <div class="auth-method-header">
+                                        <div class="auth-method-title">Personal Information Verification</div>
+                                    </div>
+                                    <div class="auth-method-description">Ask client to verify personal details (last 4 digits of ID, date of birth, etc.)</div>
+                                    <div class="auth-method-features">
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>No app required</span>
+                                        </div>
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>Voice call friendly</span>
+                                        </div>
+                                        <div class="auth-feature">
+                                            <i data-feather="check"></i>
+                                            <span>~45 seconds</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="select-auth-btn">
+                                    <span>Select</span>
+                                    <i data-feather="chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Skip Section -->
+                        <div style="margin-top: 40px; padding-top: 32px; border-top: 2px solid #E5E7EB; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+                            <div style="flex: 1; min-width: 250px;">
+                                <div style="font-weight: 600; font-size: 16px; color: #111827; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+                                    <i data-feather="alert-circle" style="width: 18px; height: 18px; color: #F59E0B;"></i>
+                                    Skip Authentication
+                                </div>
+                                <div style="font-size: 13px; color: #EF4444; font-weight: 500;">⚠️ Not recommended - Only for internal investigations</div>
+                            </div>
+                            <button type="button" class="btn btn-secondary" onclick="showSkipConfirmation()" style="padding: 10px 24px;">
+                                <i data-feather="skip-forward" style="width: 16px; height: 16px; margin-right: 8px;"></i>
+                                Skip
+                            </button>
+                        </div>
+
+                        <!-- Security Note -->
+                        <div style="margin-top: 32px; padding: 20px; background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%); border: 2px solid #BBF7D0; border-radius: 12px; display: flex; gap: 16px; align-items: flex-start; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);">
+                            <div style="width: 40px; height: 40px; background: #10B981; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i data-feather="shield" style="width: 22px; height: 22px; color: white;"></i>
+                            </div>
+                            <div style="flex: 1;">
+                                <div style="font-size: 14px; color: #065F46; line-height: 1.7; font-weight: 500;">
+                                    <strong style="font-weight: 700; font-size: 15px;">Authentication-First Security</strong><br>
+                                    All client data remains masked until authentication is complete. This session will be valid for 15 minutes with one extension allowed.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Skip Confirmation Modal -->
+    <div class="modal-overlay" id="skipModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i data-feather="alert-triangle"></i>
+                </div>
+                <h2 class="modal-title">Skip Authentication?</h2>
+                <p class="modal-description">Are you sure you want to proceed without authentication?</p>
+            </div>
+
+            <div class="modal-warning">
+                <p class="modal-warning-text">
+                    <strong>Warning:</strong> Skipping authentication should only be done for internal investigations where the client is not present. 
+                    This action will be logged and reviewed. You confirm that:
+                </p>
+                <ul class="modal-warning-text" style="margin-top: 8px; padding-left: 20px;">
+                    <li>The client is not on the phone</li>
+                    <li>This is for investigation purposes only</li>
+                    <li>You have proper authorization to view this account</li>
+                </ul>
+            </div>
+
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-cancel" onclick="closeSkipModal()">
+                    Cancel
+                </button>
+                <button class="modal-btn modal-btn-confirm" onclick="confirmSkip()">
+                    Yes, Skip Authentication
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+
+        document.getElementById('menuToggle')?.addEventListener('click', function() {
+            document.getElementById('sidebar')?.classList.toggle('active');
+        });
+
+        // Get client ID from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const clientId = urlParams.get('clientId') || '260115130049329'; // Default ID if not provided
+
+        function authenticateClient(method) {
+            // Redirect to specific authentication page
+            if (method === 'app') {
+                window.location.href = 'app-auth.html?clientId=' + clientId;
+            } else if (method === 'otp') {
+                window.location.href = 'otp-auth.html?clientId=' + clientId;
+            } else if (method === 'personal') {
+                window.location.href = 'personal-auth.html?clientId=' + clientId;
+            }
+        }
+
+        function showSkipConfirmation() {
+            document.getElementById('skipModal').classList.add('active');
+            feather.replace();
+        }
+
+        function closeSkipModal() {
+            document.getElementById('skipModal').classList.remove('active');
+        }
+
+        function confirmSkip() {
+            alert('Authentication skipped. This action has been logged.\nRedirecting to client detail...');
+            // Redirect to client detail page with skip flag
+            window.location.href = 'client-portal.html?view=detail&clientId=' + clientId + '&authenticated=skip';
+        }
+    </script>
+</body>
+</html>

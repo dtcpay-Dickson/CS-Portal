@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Information Verification - dtcpay CS Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo" style="flex-direction: column; align-items: center;">
+                <img src="https://dtcpay.com/wp-content/themes/dtc/frontend/resources/img/dtc-logo.svg" alt="dtcpay" style="height: 40px; width: auto; margin-bottom: 8px;" onerror="this.style.display='none'">
+                <div style="display: flex; flex-direction: column; gap: 2px; align-items: center; text-align: center;">
+                    <span style="font-size: 16px; font-weight: 700; color: var(--white); letter-spacing: 0.5px;">TOP 2.0</span>
+                    <span style="font-size: 13px; font-weight: 500; color: var(--sidebar-text);">CS Portal</span>
+                </div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-title">AUTHENTICATION</div>
+                <a href="index.html" class="nav-item">
+                    <i data-feather="search"></i>
+                    <span>Find Client</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <i data-feather="user-check"></i>
+                    <span>Personal Verification</span>
+                </a>
+            </div>
+            <div class="nav-section" style="margin-top: 16px;">
+                <div class="nav-section-title">HELP & SUPPORT</div>
+                <a href="user-guide.html" class="nav-item">
+                    <i data-feather="book-open"></i>
+                    <span>User Guide</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="user-avatar-small">CS</div>
+                <div class="user-info">
+                    <div class="user-name-small">CS Agent</div>
+                    <div class="user-role">Customer Support</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Top Navigation Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i data-feather="menu"></i>
+                </button>
+                <button class="btn btn-sm btn-secondary" onclick="history.back()" style="margin-right: 16px;">
+                    <i data-feather="arrow-left" style="width: 14px; height: 14px;"></i>
+                    Back
+                </button>
+                <h1 style="font-size: 20px; font-weight: 600; color: #111827; margin: 0;">Personal Information Verification</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="user-menu">
+                    <div class="user-avatar">CS</div>
+                    <span class="user-name">CS Agent</span>
+                    <i data-feather="chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content" style="background: #F9FAFB; min-height: 100vh;">
+            <div style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
+                <!-- Client Banner -->
+                <div style="margin-bottom: 32px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 24px; border-radius: 16px; color: white; box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div style="width: 60px; height: 60px; background: rgba(255, 255, 255, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 22px; backdrop-filter: blur(10px); border: 3px solid rgba(255, 255, 255, 0.3);">JD</div>
+                        <div style="flex: 1;">
+                            <div style="font-weight: 700; font-size: 20px; margin-bottom: 6px; letter-spacing: -0.5px;">John Doe</div>
+                            <div style="font-size: 13px; opacity: 0.95; font-weight: 500;">ID: 260115130049329</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Verification Card -->
+                <div style="background: white; border-radius: 16px; padding: 40px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
+                    <div style="text-align: center; margin-bottom: 32px;">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px;">
+                            <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(102, 126, 234, 0.25);">
+                                <i data-feather="user-check" style="width: 28px; height: 28px; color: white;"></i>
+                            </div>
+                            <h2 style="font-size: 24px; font-weight: 700; color: #111827; margin: 0; letter-spacing: -0.5px;">Personal Information</h2>
+                        </div>
+                        <p style="font-size: 15px; color: #6B7280; line-height: 1.5; margin: 0;">Verify client identity by asking for personal details</p>
+                    </div>
+
+                    <!-- Info Alert -->
+                    <div style="padding: 16px; background: #DBEAFE; border: 2px solid #93C5FD; border-radius: 12px; margin-bottom: 32px;">
+                        <div style="display: flex; align-items: start; gap: 12px;">
+                            <i data-feather="info" style="width: 20px; height: 20px; color: #1E40AF; flex-shrink: 0; margin-top: 2px;"></i>
+                            <div style="font-size: 14px; color: #1E3A8A; line-height: 1.6;">
+                                <strong>Instructions:</strong><br>
+                                Select verification questions below and ask the client to provide the information. Compare their answers with the details on file.
+                            </div>
+                        </div>
+                    </div>
+
+                    <form onsubmit="verifyInformation(event)">
+                        <!-- Verification Questions -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
+                            <!-- Date of Birth -->
+                            <div>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; color: #111827; margin-bottom: 10px;">
+                                    <input type="checkbox" id="dobCheck" onchange="toggleField('dob')" style="width: 18px; height: 18px; accent-color: #667eea; cursor: pointer;">
+                                    <i data-feather="calendar" style="width: 16px; height: 16px;"></i>
+                                    Date of Birth
+                                </label>
+                                <input type="date" id="dobInput" disabled class="form-input" style="width: 100%; height: 48px; font-size: 15px; border: 2px solid #E5E7EB; border-radius: 10px; padding: 0 16px; opacity: 0.5;">
+                                <div style="font-size: 12px; color: #6B7280; margin-top: 6px;">On file: <strong>15 Jan 1990</strong></div>
+                            </div>
+
+                            <!-- ID Number (Last 4 digits) -->
+                            <div>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; color: #111827; margin-bottom: 10px;">
+                                    <input type="checkbox" id="idCheck" onchange="toggleField('id')" style="width: 18px; height: 18px; accent-color: #667eea; cursor: pointer;">
+                                    <i data-feather="credit-card" style="width: 16px; height: 16px;"></i>
+                                    ID Last 4 Digits
+                                </label>
+                                <input type="text" id="idInput" maxlength="4" disabled class="form-input" placeholder="XXXX" style="width: 100%; height: 48px; font-size: 15px; letter-spacing: 4px; border: 2px solid #E5E7EB; border-radius: 10px; padding: 0 16px; opacity: 0.5;" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                <div style="font-size: 12px; color: #6B7280; margin-top: 6px;">On file: <strong>****9329</strong></div>
+                            </div>
+
+                            <!-- Passport Number -->
+                            <div>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; color: #111827; margin-bottom: 10px;">
+                                    <input type="checkbox" id="passportCheck" onchange="toggleField('passport')" style="width: 18px; height: 18px; accent-color: #667eea; cursor: pointer;">
+                                    <i data-feather="book" style="width: 16px; height: 16px;"></i>
+                                    Passport Number
+                                </label>
+                                <input type="text" id="passportInput" disabled class="form-input" placeholder="E1234567" style="width: 100%; height: 48px; font-size: 15px; letter-spacing: 2px; text-transform: uppercase; border: 2px solid #E5E7EB; border-radius: 10px; padding: 0 16px; opacity: 0.5;">
+                                <div style="font-size: 12px; color: #6B7280; margin-top: 6px;">On file: <strong>E9876543</strong></div>
+                            </div>
+
+                            <!-- Nationality -->
+                            <div>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; color: #111827; margin-bottom: 10px;">
+                                    <input type="checkbox" id="nationalityCheck" onchange="toggleField('nationality')" style="width: 18px; height: 18px; accent-color: #667eea; cursor: pointer;">
+                                    <i data-feather="flag" style="width: 16px; height: 16px;"></i>
+                                    Nationality
+                                </label>
+                                <select id="nationalityInput" disabled class="form-select" style="width: 100%; height: 48px; font-size: 15px; border: 2px solid #E5E7EB; border-radius: 10px; padding: 0 16px; opacity: 0.5;">
+                                    <option value="">Select nationality</option>
+                                    <option value="singapore">Singapore</option>
+                                    <option value="malaysia">Malaysia</option>
+                                    <option value="china">China</option>
+                                    <option value="usa">United States</option>
+                                    <option value="uk">United Kingdom</option>
+                                    <option value="australia">Australia</option>
+                                </select>
+                                <div style="font-size: 12px; color: #6B7280; margin-top: 6px;">On file: <strong>Singapore</strong></div>
+                            </div>
+                        </div>
+
+                        <!-- Verification Result (hidden initially) -->
+                        <div id="verificationResult" style="display: none; padding: 16px; border-radius: 12px; margin-bottom: 24px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <i id="resultIcon" data-feather="check-circle" style="width: 24px; height: 24px; flex-shrink: 0;"></i>
+                                <div>
+                                    <strong id="resultTitle">Verification Successful!</strong><br>
+                                    <span id="resultMessage" style="font-size: 14px;"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div style="display: flex; gap: 12px; justify-content: center;">
+                            <button type="button" onclick="history.back()" class="btn btn-secondary" style="padding: 12px 24px;">
+                                <i data-feather="arrow-left" style="width: 16px; height: 16px;"></i>
+                                Back
+                            </button>
+                            <button type="submit" class="btn btn-primary" style="padding: 12px 32px;">
+                                <i data-feather="check" style="width: 16px; height: 16px;"></i>
+                                Verify Information
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+
+        document.getElementById('menuToggle')?.addEventListener('click', function() {
+            document.getElementById('sidebar')?.classList.toggle('active');
+        });
+
+        // Get client ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const clientId = urlParams.get('clientId') || '260115130049329';
+
+        // Toggle field enabled/disabled based on checkbox
+        function toggleField(fieldType) {
+            const checkbox = document.getElementById(fieldType + 'Check');
+            const input = document.getElementById(fieldType + 'Input');
+
+            input.disabled = !checkbox.checked;
+            input.style.opacity = checkbox.checked ? '1' : '0.5';
+
+            if (!checkbox.checked) {
+                input.value = '';
+            }
+        }
+
+        function verifyInformation(e) {
+            e.preventDefault();
+
+            // Check if at least one field is selected
+            const anyChecked = document.getElementById('dobCheck').checked ||
+                              document.getElementById('idCheck').checked ||
+                              document.getElementById('passportCheck').checked ||
+                              document.getElementById('nationalityCheck').checked;
+
+            if (!anyChecked) {
+                alert('Please select at least one verification method');
+                return;
+            }
+
+            // Get values
+            const dobValue = document.getElementById('dobCheck').checked ? document.getElementById('dobInput').value : null;
+            const idValue = document.getElementById('idCheck').checked ? document.getElementById('idInput').value : null;
+            const passportValue = document.getElementById('passportCheck').checked ? document.getElementById('passportInput').value : null;
+            const nationalityValue = document.getElementById('nationalityCheck').checked ? document.getElementById('nationalityInput').value : null;
+
+            // For demo: verify if any filled value matches expected
+            let verified = true;
+            let checkedCount = 0;
+            let matchCount = 0;
+
+            if (dobValue !== null) {
+                checkedCount++;
+                if (dobValue === '1990-01-15') matchCount++;
+            }
+            if (idValue !== null) {
+                checkedCount++;
+                if (idValue === '9329') matchCount++;
+            }
+            if (passportValue !== null) {
+                checkedCount++;
+                if (passportValue.toUpperCase() === 'E9876543') matchCount++;
+            }
+            if (nationalityValue !== null) {
+                checkedCount++;
+                if (nationalityValue === 'singapore') matchCount++;
+            }
+
+            // Show result
+            const resultDiv = document.getElementById('verificationResult');
+            const resultIcon = document.getElementById('resultIcon');
+            const resultTitle = document.getElementById('resultTitle');
+            const resultMessage = document.getElementById('resultMessage');
+
+            resultDiv.style.display = 'block';
+
+            if (matchCount === checkedCount) {
+                // All match - success
+                resultDiv.style.background = '#ECFDF5';
+                resultDiv.style.border = '2px solid #A7F3D0';
+                resultIcon.setAttribute('data-feather', 'check-circle');
+                resultIcon.style.color = '#10B981';
+                resultTitle.textContent = 'Verification Successful!';
+                resultTitle.style.color = '#065F46';
+                resultMessage.textContent = `All ${checkedCount} verification ${checkedCount === 1 ? 'check' : 'checks'} passed. Redirecting to client portal...`;
+                resultMessage.style.color = '#065F46';
+
+                feather.replace();
+
+                // Redirect after 2 seconds
+                setTimeout(() => {
+                    window.location.href = 'client-portal.html?view=detail&clientId=' + clientId + '&authenticated=true';
+                }, 2000);
+            } else {
+                // Some don't match - failure
+                resultDiv.style.background = '#FEE2E2';
+                resultDiv.style.border = '2px solid #FECACA';
+                resultIcon.setAttribute('data-feather', 'x-circle');
+                resultIcon.style.color = '#EF4444';
+                resultTitle.textContent = 'Verification Failed';
+                resultTitle.style.color = '#991B1B';
+                resultMessage.textContent = `${matchCount} of ${checkedCount} ${checkedCount === 1 ? 'check' : 'checks'} passed. Please verify the information with the client again.`;
+                resultMessage.style.color = '#991B1B';
+
+                feather.replace();
+            }
+        }
+    </script>
+</body>
+</html>
