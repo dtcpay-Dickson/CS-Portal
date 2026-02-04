@@ -8,9 +8,9 @@
 
 :root {
     /* Color Palette - Professional Fintech */
-    --primary: #6366F1;
-    --primary-hover: #5558E3;
-    --primary-light: #EEF2FF;
+    --primary: #C7EA46;
+    --primary-hover: #A8D93F;
+    --primary-light: #F1F8E9;
 
     --secondary: #E5E7EB;
     --secondary-hover: #D1D5DB;
@@ -40,7 +40,7 @@
     /* Sidebar */
     --sidebar-bg: #1E293B;
     --sidebar-text: #94A3B8;
-    --sidebar-active: #6366F1;
+    --sidebar-active: #C7EA46;
     --sidebar-hover: #334155;
     --sidebar-width: 240px;
 
@@ -156,7 +156,8 @@ body {
 
 .nav-item.active {
     background: var(--sidebar-active);
-    color: var(--white);
+    color: #1B5E20;
+    font-weight: 600;
 }
 
 .nav-item i {
@@ -399,7 +400,7 @@ body {
 }
 
 .breadcrumb-link:hover {
-    color: var(--primary);
+    color: #689F38;
 }
 
 .breadcrumb i {
@@ -430,7 +431,8 @@ body {
 
 .btn-primary {
     background: var(--primary);
-    color: var(--white);
+    color: #1B5E20;
+    font-weight: 600;
 }
 
 .btn-primary:hover {
@@ -462,7 +464,7 @@ body {
 .btn-text {
     background: none;
     border: none;
-    color: var(--primary);
+    color: #689F38;
     font-weight: 500;
     cursor: pointer;
     padding: var(--spacing-sm);
@@ -470,7 +472,7 @@ body {
 }
 
 .btn-text:hover {
-    color: var(--primary-hover);
+    color: #558B2F;
     text-decoration: underline;
 }
 
@@ -1149,13 +1151,13 @@ body {
 .card-link {
     font-size: 14px;
     font-weight: 500;
-    color: var(--primary);
+    color: #689F38;
     text-decoration: none;
     transition: var(--transition);
 }
 
 .card-link:hover {
-    color: var(--primary-hover);
+    color: #558B2F;
     text-decoration: underline;
 }
 

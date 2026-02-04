@@ -90,8 +90,8 @@
                 <div>
                     <div style="background: white; border-radius: 16px; padding: 32px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); position: sticky; top: 24px;">
                         <div style="text-align: center; margin-bottom: 32px;">
-                            <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);">
-                                <i data-feather="user" style="width: 32px; height: 32px; color: white;"></i>
+                            <div style="width: 64px; height: 64px; background: linear-gradient(135deg, #C7EA46 0%, #A8D93F 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);">
+                                <i data-feather="user" style="width: 32px; height: 32px; color: #1B5E20;"></i>
                             </div>
                             <h1 style="font-size: 24px; font-weight: 700; color: #111827; margin: 0 0 8px 0; letter-spacing: -0.5px;">Search by Name</h1>
                             <p style="font-size: 14px; color: #6B7280; line-height: 1.5; margin: 0;">Enter full or partial name</p>
@@ -105,12 +105,12 @@
                                 </label>
                                 <input type="text" id="nameInput" class="form-input" placeholder="John" required autocomplete="off" style="width: 100%; height: 52px; font-size: 18px; border: 2px solid #E5E7EB; border-radius: 10px; padding: 0 20px;">
                                 <div style="display: flex; align-items: center; gap: 8px; margin-top: 10px; padding: 10px; background: #F3F4F6; border-radius: 8px;">
-                                    <i data-feather="info" style="width: 14px; height: 14px; color: #6366F1; flex-shrink: 0;"></i>
+                                    <i data-feather="info" style="width: 14px; height: 14px; color: #8BC34A; flex-shrink: 0;"></i>
                                     <span style="font-size: 13px; color: #6B7280;">Results will appear on the right</span>
                                 </div>
                             </div>
 
-                            <button type="submit" id="searchBtn" style="width: 100%; height: 52px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; border-radius: 12px; color: white; font-size: 16px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4); transition: all 0.2s;">
+                            <button type="submit" id="searchBtn" style="width: 100%; height: 52px; background: linear-gradient(135deg, #C7EA46 0%, #A8D93F 100%); border: none; border-radius: 12px; color: #1B5E20; font-size: 16px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4); transition: all 0.2s;">
                                 <i data-feather="search" style="width: 18px; height: 18px;"></i>
                                 Search Client
                             </button>
@@ -176,11 +176,11 @@
 
         // Mock client data - variations based on search
         const mockClients = [
-            { name: 'John Tan', id: '260115130049329', initials: 'JT', country: '🇸🇬 Singapore', phone: '+65 9*** ****', color: '#667eea', tier: 'TIER 2', status: 'ACTIVE' },
+            { name: 'John Tan', id: '260115130049329', initials: 'JT', country: '🇸🇬 Singapore', phone: '+65 9*** ****', color: '#C7EA46', tier: 'TIER 2', status: 'ACTIVE' },
             { name: 'John Cheng', id: '260115130049328', initials: 'JC', country: '🇸🇬 Singapore', phone: '+65 8*** ****', color: '#10B981', tier: 'TIER 3', status: 'ACTIVE' },
             { name: 'Johnson Wang', id: '260115130049327', initials: 'JW', country: '🇨🇳 China', phone: '+86 138 ****', color: '#F59E0B', tier: 'TIER 1', status: 'ACTIVE' },
             { name: 'John Smith', id: '260115130049326', initials: 'JS', country: '🇺🇸 United States', phone: '+1 415 ***', color: '#EF4444', tier: 'TIER 0', status: 'ACTIVE' },
-            { name: 'John Lee', id: '260115130049325', initials: 'JL', country: '🇭🇰 Hong Kong', phone: '+852 9*** ****', color: '#8B5CF6', tier: 'TIER 2', status: 'ACTIVE' },
+            { name: 'John Lee', id: '260115130049325', initials: 'JL', country: '🇭🇰 Hong Kong', phone: '+852 9*** ****', color: '#A8D93F', tier: 'TIER 2', status: 'ACTIVE' },
             { name: 'Johnny Lim', id: '260115130049324', initials: 'JL', country: '🇲🇾 Malaysia', phone: '+60 12 ***', color: '#06B6D4', tier: 'TIER 1', status: 'ACTIVE' },
             { name: 'John Brown', id: '260115130049323', initials: 'JB', country: '🇬🇧 United Kingdom', phone: '+44 20 ***', color: '#EC4899', tier: 'TIER 3', status: 'ACTIVE' },
             { name: 'John Davis', id: '260115130049322', initials: 'JD', country: '🇦🇺 Australia', phone: '+61 4** ***', color: '#F97316', tier: 'TIER 2', status: 'SUSPENDED' }
@@ -206,9 +206,9 @@
                 // Generate client cards
                 const clientGrid = document.getElementById('clientGrid');
                 clientGrid.innerHTML = mockClients.map(client => `
-                    <div onclick="window.location.href='choose-auth.html?clientId=${client.id}'" style="background: white; border: 2px solid #E5E7EB; border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.2s;" onmouseenter="this.style.borderColor='#667eea'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.15)';" onmouseleave="this.style.borderColor='#E5E7EB'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    <div onclick="window.location.href='choose-auth.html?clientId=${client.id}'" style="background: white; border: 2px solid #E5E7EB; border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.2s;" onmouseenter="this.style.borderColor='#C7EA46'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.15)';" onmouseleave="this.style.borderColor='#E5E7EB'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
                         <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
-                            <div style="width: 56px; height: 56px; background: ${client.color}; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px; flex-shrink: 0;">${client.initials}</div>
+                            <div style="width: 56px; height: 56px; background: ${client.color}; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #1B5E20; font-weight: 700; font-size: 18px; flex-shrink: 0;">${client.initials}</div>
                             <div style="flex: 1; min-width: 0;">
                                 <div style="font-weight: 700; font-size: 17px; color: #111827; margin-bottom: 4px;">${client.name}</div>
                                 <div style="font-size: 13px; color: #6B7280; font-family: monospace;">${client.id}</div>
